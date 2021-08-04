@@ -1,5 +1,6 @@
 require('dotenv').config({ path: './config.env' })
 const express = require('express')
+const path = require('path')
 const errorHandler = require('./middleware/error')
 const { checkUser } = require('./middleware/auth')
 const cors = require('cors')
@@ -24,6 +25,18 @@ app.use('/api/auth', require('./routes/auth'))
 
 //Error Handler (Should be last piece of middleware)
 app.use(errorHandler)
+
+if (process.env.NODE_ENV === 'production') {
+  app.use(express.static(path.join(__dirname, '/client/build')))
+
+  app.get('*', (req, res) => {
+    res.sendFile(path.join(__dirname, 'client', 'build', 'index.html'))
+  })
+} else {
+  app.get('/', (req, res) => {
+    res.send('Api running')
+  })
+}
 
 const PORT = process.env.PORT || 5000
 
