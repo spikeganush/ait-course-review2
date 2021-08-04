@@ -6,38 +6,34 @@ export const UPDATE_BIO = 'UPDATE_BIO'
 export const UPDATE_EMAIL = 'UPDATE_EMAIL'
 export const UPDATE_ADMIN = 'UPDATE_ADMIN'
 
+export const GET_USER_ERRORS = 'GET_USER_ERRORS'
+
 export const getUser = (uid) => {
   return (dispatch) => {
-    return (
-      axios
-        //${process.env.REACT_APP_API_URL}
-        .get(`/api/user/${uid}`)
-        .then((res) => {
-          dispatch({ type: GET_USER, payload: res.data })
-        })
-        .catch((err) => console.log(err))
-    )
+    return axios
+      .get(`/api/user/${uid}`)
+      .then((res) => {
+        dispatch({ type: GET_USER, payload: res.data })
+      })
+      .catch((err) => console.log(err))
   }
 }
 
 export const uploadPicture = (data, id) => {
   return (dispatch) => {
-    return (
-      axios
-        //${process.env.REACT_APP_API_URL}
-        .post(`/api/user/upload`, data)
-        .then((res) => {
-          return (
-            axios
-              //${process.env.REACT_APP_API_URL}
-              .get(`/api/user/${id}`)
-              .then((res) => {
-                dispatch({ type: UPLOAD_PICTURE, payload: res.data.picture })
-              })
-          )
-        })
-        .catch((err) => console.log(err))
-    )
+    return axios
+      .post(`/api/user/upload`, data)
+      .then((res) => {
+        if (res.data.errors) {
+          dispatch({ type: GET_USER_ERRORS, payload: res.data.errors })
+        } else {
+          dispatch({ type: GET_USER_ERRORS, payload: '' })
+          return axios.get(`/api/user/${id}`).then((res) => {
+            dispatch({ type: UPLOAD_PICTURE, payload: res.data.picture })
+          })
+        }
+      })
+      .catch((err) => console.log(err))
   }
 }
 

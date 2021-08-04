@@ -11,6 +11,7 @@ const UpdateProfil = () => {
   const [updateForm, setUpdateForm] = useState(false)
   // const [updateFormEmail, setUpdateFormEmail] = useState(false)
   const userData = useSelector((state) => state.userReducer)
+  const error = useSelector((state) => state.errorReducer.userError)
   const dispatch = useDispatch()
 
   const handleUpdate = () => {
@@ -28,9 +29,9 @@ const UpdateProfil = () => {
       <div className="update-container">
         <div className="left-part">
           <h3>Profil picture</h3>
+          <p>{error.maxSize}</p>
+          <p>{error.format}</p>
           <img src={userData.picture} alt="user-pic" />
-          {/* <p>{errors.maxSize}</p>
-                    <p>{errors.format}</p> */}
           <Uploading />
         </div>
         <div className="right-part">

@@ -11,7 +11,7 @@ const Home = () => {
       <input type="text" className="search-bar" />
 
       <div className="welcome">
-        <h1>Welcome To Course Reviews</h1>
+        <h1>Welcome To Course Reviews pourt</h1>
         <p>
           Welcome AIT students, let's explore our new websites that providing
           lots of reviews and suggestions from AIT students. Students cann
