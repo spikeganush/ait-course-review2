@@ -24,6 +24,9 @@
 .btn-log {
   cursor: pointer;
 }
+.who_care {
+  color: black;
+}
 
 a,
 a:visited {
