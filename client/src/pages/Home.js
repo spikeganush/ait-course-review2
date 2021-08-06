@@ -7,9 +7,14 @@ const Home = () => {
     <>
       <div className="banner" style={{ backgroundImage: `url(${bg_banner})` }}>
         <div className="text-banner">
-          <h1>Enjoy Your New Experiences With Us</h1>
-          <input type="text" className="search-bar" />
+          <h1>Enjoy Your New</h1>
+          <h1>Experiences With Us</h1>
         </div>
+        <input
+          type="text"
+          className="input-bar"
+          placeholder="Search by keyword"
+        />
       </div>
 
       <div className="banner2">
