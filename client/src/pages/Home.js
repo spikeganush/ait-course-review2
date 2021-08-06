@@ -7,7 +7,7 @@ const Home = () => {
     <>
       <div className="banner" style={{ backgroundImage: `url(${bg_banner})` }}>
         <div className="text-banner">
-          <h1>Enjoy Your New</h1>
+          <h1>Enjoy Your New Kebab</h1>
           <h1>Experiences With Us</h1>
         </div>
         <input
