@@ -43,9 +43,10 @@ const Home = () => {
           <div className="column1">
             <h1>Course Suggestions</h1>
           </div>
-        </div>
-        <div className="column1">
-          <a href="view_all">View All</a>
+
+          <div className="column1">
+            <a href="view_all">View All</a>
+          </div>
         </div>
 
         <div className="row2">
