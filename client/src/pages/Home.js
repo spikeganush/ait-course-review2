@@ -1,10 +1,11 @@
 import React from 'react'
 import Footer from '../components/Footer'
+import bg_banner from '../img/pineapple3.jpeg'
 
 const Home = () => {
   return (
     <>
-      <div className="banner">
+      <div className="banner" style={{ backgroundImage: `url(${bg_banner})` }}>
         <div className="text-banner">
           <h1>Enjoy Your New Experiences With Us</h1>
           <input type="text" className="search-bar" />
@@ -23,7 +24,11 @@ const Home = () => {
             </p>
           </div>
           <div className="column">
-            <img src="" alt="student" className="student-image" />
+            <img
+              src="../img/pineapple6.jpeg"
+              alt="student"
+              className="student-image"
+            />
           </div>
         </div>
       </div>
@@ -40,7 +45,11 @@ const Home = () => {
 
         <div className="row2">
           <div className="column2">
-            <img src="" alt="course" className="course-photo" />
+            <img
+              src="../img/course_image1.jpeg"
+              alt="course"
+              className="course-photo"
+            />
             <h3>Bachelor of IT</h3>
             <p>Bachelor of Information Technology</p>
             <div className="star-ranking">
@@ -74,7 +83,11 @@ const Home = () => {
           </div>
 
           <div className="column2">
-            <img src="" alt="course" className="course-photo" />
+            <img
+              src="../img/course_image1.jpeg"
+              alt="course"
+              className="course-photo"
+            />
             <h3>Bachelor of Art & Design</h3>
             <p>Bachelor of Information Technology</p>
             <div className="star-ranking">
@@ -108,7 +121,11 @@ const Home = () => {
           </div>
 
           <div className="column2">
-            <img src="" alt="course" className="course-photo" />
+            <img
+              src="../img/course_image2.jpeg"
+              alt="course"
+              className="course-photo"
+            />
             <h3>Bachelor of Computer Science</h3>
             <p>Java,Data base, Swift,...</p>
             <div className="star-ranking">
@@ -153,7 +170,11 @@ const Home = () => {
 
         <div className="row2">
           <div className="column2">
-            <img src="" alt="course" className="course-photo" />
+            <img
+              src="../img/course_image1.jpeg"
+              alt="course"
+              className="course-photo"
+            />
             <h3>Advanced Web</h3>
             <p>JavaScript, PHP, Front end,...</p>
             <div className="star-ranking">
@@ -188,7 +209,11 @@ const Home = () => {
           </div>
 
           <div className="column2">
-            <img src="" alt="course" className="course-photo" />
+            <img
+              src="../img/course_image2.jpeg"
+              alt="course"
+              className="course-photo"
+            />
             <h3>System Analysis And Design</h3>
             <p>The theory of system,...</p>
             <div className="star-ranking">
@@ -222,7 +247,11 @@ const Home = () => {
           </div>
 
           <div className="column2">
-            <img src="" alt="course" className="course-photo" />
+            <img
+              src="../img/course_image1.jpeg"
+              alt="course"
+              className="course-photo"
+            />
             <h3>Java</h3>
             <p>Java course.</p>
             <div className="star-ranking">

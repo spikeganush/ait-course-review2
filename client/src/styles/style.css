@@ -660,13 +660,12 @@ a {
   color: black;
 }
 
-/* .banner {
+.banner {
   overflow: hidden;
-  background-image: url(/image/pineapple3.jpeg);
   background-size: cover;
   background-repeat: no-repeat;
   text-align: center;
-} */
+}
 
 .text-banner {
   margin: 290px 50px 230px;
@@ -701,12 +700,11 @@ a {
   color: white;
 }
 
-/* .banner2 {
+.banner2 {
   overflow: hidden;
-  background-image: url(/image/pineapple5.png);
-  background-size: cover;
-  background-repeat: no-repeat;
-} */
+  /* background-image: url(/image/pineapple5.png); */
+  background: #000;
+}
 
 .student-image {
   max-width: 100%;

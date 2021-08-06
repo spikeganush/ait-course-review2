@@ -78,13 +78,13 @@ const Footer = () => {
         <div className="column4">
           <h3>Our Social Media</h3>
           <a href="facebook">
-            <img src="/image/facebook (1).png" alt="facebook-logo" />
+            <img src="../img/facebook.png" alt="facebook-logo" />
           </a>
           <a href="twitter">
-            <img src="/image/twitter (2).png" alt="twttier-logo" />
+            <img src="../img/twitter.png" alt="twttier-logo" />
           </a>
           <a href="google">
-            <img src="/image/google-plus (2).png" alt="google-logo" />
+            <img src="../img/google-plus.png" alt="google-logo" />
           </a>
         </div>
       </div>
