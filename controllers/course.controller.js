@@ -11,6 +11,7 @@ module.exports.getAllCourses = async (req, res) => {
 }
 
 exports.addCourse = async (req, res) => {
+  let fileName
   let chargeName
 
   if (req.file !== null) {
@@ -28,7 +29,7 @@ exports.addCourse = async (req, res) => {
       return res.status(201).json({ errors })
     }
     chargeName = req.body.title
-    const fileName = chargeName.replace(/\s/g, '') + Date.now() + '.jpg'
+    fileName = chargeName.replace(/\s/g, '') + Date.now() + '.jpg'
 
     await pipeline(
       req.file.stream,

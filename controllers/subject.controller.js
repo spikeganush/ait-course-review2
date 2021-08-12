@@ -11,6 +11,7 @@ module.exports.getAllSubjects = async (req, res) => {
 }
 
 exports.addSubject = async (req, res) => {
+  let fileName
   let chargeName
 
   if (req.file !== null) {
@@ -28,7 +29,7 @@ exports.addSubject = async (req, res) => {
       return res.status(201).json({ errors })
     }
     chargeName = req.body.title
-    const fileName = chargeName.replace(/\s/g, '') + Date.now() + '.jpg'
+    fileName = chargeName.replace(/\s/g, '') + Date.now() + '.jpg'
 
     await pipeline(
       req.file.stream,
