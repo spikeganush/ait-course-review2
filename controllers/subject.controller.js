@@ -1,5 +1,4 @@
 const SubjectModel = require('../models/Subject')
-const ErrorResponse = require('../utils/ErrorResponse')
 const ObjectID = require('mongoose').Types.ObjectId
 const fs = require('fs')
 const { promisify } = require('util')
