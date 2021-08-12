@@ -3,6 +3,7 @@ const ObjectID = require('mongoose').Types.ObjectId
 const fs = require('fs')
 const { promisify } = require('util')
 const pipeline = promisify(require('stream').pipeline)
+const { uploadErrors } = require('../utils/errors.utils')
 
 module.exports.getAllSubjects = async (req, res) => {
   const Subjects = await SubjectModel.find()
@@ -10,7 +11,6 @@ module.exports.getAllSubjects = async (req, res) => {
 }
 
 exports.addSubject = async (req, res) => {
-  let fileName
   let chargeName
 
   if (req.file !== null) {
@@ -28,7 +28,7 @@ exports.addSubject = async (req, res) => {
       return res.status(201).json({ errors })
     }
     chargeName = req.body.title
-    fileName = chargeName.replace(/\s/g, '') + Date.now() + '.jpg'
+    const fileName = chargeName.replace(/\s/g, '') + Date.now() + '.jpg'
 
     await pipeline(
       req.file.stream,

@@ -1,5 +1,4 @@
 const CourseModel = require('../models/Course')
-//const ErrorResponse = require('../utils/ErrorResponse')
 const { uploadErrors } = require('../utils/errors.utils')
 const ObjectID = require('mongoose').Types.ObjectId
 const fs = require('fs')
@@ -12,7 +11,6 @@ module.exports.getAllCourses = async (req, res) => {
 }
 
 exports.addCourse = async (req, res) => {
-  let fileName
   let chargeName
 
   if (req.file !== null) {
@@ -30,7 +28,7 @@ exports.addCourse = async (req, res) => {
       return res.status(201).json({ errors })
     }
     chargeName = req.body.title
-    fileName = chargeName.replace(/\s/g, '') + Date.now() + '.jpg'
+    const fileName = chargeName.replace(/\s/g, '') + Date.now() + '.jpg'
 
     await pipeline(
       req.file.stream,
