@@ -22,6 +22,8 @@ app.get('/jwtid', checkUser, (req, res) => {
 // routes
 app.use('/api/user', require('./routes/user.routes'))
 app.use('/api/auth', require('./routes/auth'))
+app.use('/api/course', require('./routes/course.routes'))
+app.use('/api/subject', require('./routes/subject.routes'))
 
 //Error Handler (Should be last piece of middleware)
 app.use(errorHandler)
