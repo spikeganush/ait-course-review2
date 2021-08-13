@@ -1,6 +1,6 @@
 import React from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { isEmpty } from '../../components/Utils'
 import { addSubject, getSubjects } from '../../actions/subject.actions'
 
@@ -20,6 +20,20 @@ const AddSubjectForm = () => {
   const [success, setSuccess] = useState('')
 
   const dispatch = useDispatch()
+
+  //load data
+  const [loadFirstCourse, setLoadFirstCourse] = useState(true)
+
+  useEffect(() => {
+    if (loadFirstCourse) {
+      if (!isEmpty(courseData[0])) {
+        setCourseSubject(courseData[0]._id)
+        setLoadFirstCourse(false)
+      } else {
+        setLoadFirstCourse(true)
+      }
+    }
+  }, [loadFirstCourse, courseData])
 
   const addSubjectHandler = async (e) => {
     e.preventDefault()
@@ -50,6 +64,7 @@ const AddSubjectForm = () => {
     setSubjectPhoto(URL.createObjectURL(e.target.files[0]))
     setFileSubject(e.target.files[0])
   }
+
   console.log(courseSubject)
   return (
     <div className="add-subject-form">

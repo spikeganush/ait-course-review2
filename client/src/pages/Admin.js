@@ -26,7 +26,6 @@ const Admin = () => {
       setLoadCourses(false)
     }
   }, [loadCourses, dispatch])
-  console.log(courseData)
   return (
     <>
       <div className="admin">
@@ -70,15 +69,17 @@ const Admin = () => {
                 />
                 <h4>{subject.code}</h4>
 
-                {courseData.map((course) => {
-                  for (let i = 0; i < subject.course.length; i++) {
-                    if (subject.course[i] === course._id) {
-                      return <h4 key={course._id}>{course.title}</h4>
-                    } else {
-                      return null
+                {!isEmpty(courseData[0]) &&
+                  courseData.map((course) => {
+                    for (let i = 0; i < subject.course.length; i++) {
+                      if (subject.course[i] === course._id) {
+                        return <h4 key={course._id}>{course.title}</h4>
+                      } else {
+                        return null
+                      }
                     }
-                  }
-                })}
+                    return null
+                  })}
 
                 <h4>{subject.summarize}</h4>
                 <h4>{subject.description}</h4>

@@ -26,6 +26,17 @@ const CourseSchema = new mongoose.Schema(
       type: String,
       required: [true, 'Please provide a photo'],
     },
+    reviews: {
+      type: [
+        {
+          reviewerId: String,
+          reviewerUsername: String,
+          reviewText: String,
+          reviewMark: Number,
+          timestamp: Number,
+        },
+      ],
+    },
   },
   {
     timestamps: true,

@@ -162,3 +162,80 @@ module.exports.deleteCourse = async (req, res) => {
     else console.log('Delete error : ' + err)
   })
 }
+
+module.exports.review = (req, res) => {
+  if (!ObjectID.isValid(req.params.id))
+    return res.status(400).send('ID unknown : ' + req.params.id)
+
+  try {
+    return CourseModel.findByIdAndUpdate(
+      req.params.id,
+      {
+        $push: {
+          reviews: {
+            reviewerId: req.body.reviewerId,
+            reviewerUsername: req.body.reviewerUsername,
+            review: req.body.review,
+            reviewMark: req.body.reviewMark,
+            timestamp: new Date().getTime(),
+          },
+        },
+      },
+      { new: true },
+      (err, docs) => {
+        if (!err) return res.send(docs)
+        else return res.status(400).send(err)
+      }
+    )
+  } catch (err) {
+    return res.status(400).send(err)
+  }
+}
+
+module.exports.editReview = (req, res) => {
+  if (!ObjectID.isValid(req.params.id))
+    return res.status(400).send('ID unknown : ' + req.params.id)
+
+  try {
+    return CourseModel.findById(req.params.id, (err, docs) => {
+      const theReview = docs.reviews.find((review) =>
+        review._id.equals(req.body.reviewId)
+      )
+
+      if (!theReview) return res.status(404).send('Review not found')
+      theReview.review = req.body.review
+
+      return docs.save((err) => {
+        if (!err) return res.status(200).send(docs)
+        return res.status(500).send(err)
+      })
+    })
+  } catch (err) {
+    return res.status(400).send(err)
+  }
+}
+
+module.exports.deleteReview = (req, res) => {
+  if (!ObjectID.isValid(req.params.id))
+    return res.status(400).send('ID unknown : ' + req.params.id)
+
+  try {
+    return CourseModel.findByIdAndUpdate(
+      req.params.id,
+      {
+        $pull: {
+          comments: {
+            _id: req.body.reviewId,
+          },
+        },
+      },
+      { new: true },
+      (err, docs) => {
+        if (!err) return res.send(docs)
+        else return res.status(400).send(err)
+      }
+    )
+  } catch (err) {
+    return res.status(400).send(err)
+  }
+}
