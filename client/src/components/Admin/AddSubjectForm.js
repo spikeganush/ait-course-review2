@@ -65,7 +65,6 @@ const AddSubjectForm = () => {
     setFileSubject(e.target.files[0])
   }
 
-  console.log(courseSubject)
   return (
     <div className="add-subject-form">
       <form
