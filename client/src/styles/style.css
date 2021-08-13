@@ -34,7 +34,7 @@ input,
 textarea {
   resize: none;
   border-radius: 20px;
-  width: 270px;
+  /* width: 270px; */
   font-family: var(--font-1);
   background: var(--white);
 }
@@ -79,8 +79,6 @@ i:hover {
 .content{
   width: 100%;
 }
-
-
 
 .star-ranking img {
   width: 25px;
@@ -915,13 +913,17 @@ body {
 .form-group input {
   width: 100%;
   margin-bottom: 0.5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .form-group label {
   font-size: 0.8rem;
 }
 
-.form-group input {
+.form-group input,
+.form-group textarea {
   padding: 10px 20px;
   border: none;
   border-bottom: 3px solid transparent;
@@ -974,4 +976,24 @@ body {
   text-align: center;
   margin: 0.5rem 0;
   border-radius: 5px;
+}
+
+.admin {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+}
+
+.admin.update {
+  display: grid;
+  grid-template-columns: auto auto auto;
+}
+
+.photo-course-subject {
+  max-width: 16rem;
+  border: solid 4px black;
+}
+
+.admin-title {
+  text-align: center;
 }
