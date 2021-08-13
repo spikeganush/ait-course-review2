@@ -1,6 +1,9 @@
 import React from 'react'
+import Footer from '../components/Footer'
 
-const Course = () => {
+
+const Course = () => 
+{
   return <div>Course</div>
 }
 
