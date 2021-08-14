@@ -52,98 +52,101 @@ const Header = () => {
         />
       </NavLink>
       <nav className="nav-bar">
-        <div className={`burger ${active}`} onClick={handleBurger}>
+        <div className="burger" onClick={handleBurger}>
           <div className="line1"></div>
           <div className="line2"></div>
           <div className="line3"></div>
-        </div>
-        <ul className="nav">
-          <li>
-            <NavLink exact to="/">
-              Home
-            </NavLink>
-          </li>
-          <li>
-            <NavLink exact to="/course">
-              Course
-            </NavLink>
-          </li>
-          <li>
-            <NavLink exact to="/news">
-              News
-            </NavLink>
-          </li>
-          <li>
-            <NavLink exact to="/aboutUs">
-              About us
-            </NavLink>
-          </li>
-          <li>
-            <NavLink exact to="/contact">
-              Contact
-            </NavLink>
-          </li>
-          {userData.admin ? (
-            <li>
-              <NavLink exact to="/admin">
-                Admin
-              </NavLink>
-            </li>
-          ) : (
-            <></>
-          )}
-          <li>
-            <div className="profile">
-              {uid ? (
-                <ul className="profile-nav">
-                  {userData.username}
-                  <NavLink exact to="/profil" className="profil-link">
-                    <img
-                      src={userData.picture}
-                      alt="user-pic"
-                      className="profile-logo"
-                    />{' '}
-                    {userData.pseudo}
+          <div className={`nav-burguer ${active}`}>
+            <ul className="nav">
+              <li>
+                <NavLink exact to="/">
+                  Home
+                </NavLink>
+              </li>
+              <li>
+                <NavLink exact to="/course">
+                  Course
+                </NavLink>
+              </li>
+              <li>
+                <NavLink exact to="/news">
+                  News
+                </NavLink>
+              </li>
+              <li>
+                <NavLink exact to="/aboutUs">
+                  About us
+                </NavLink>
+              </li>
+              <li>
+                <NavLink exact to="/contact">
+                  Contact
+                </NavLink>
+              </li>
+              {userData.admin ? (
+                <li>
+                  <NavLink exact to="/admin">
+                    Admin
                   </NavLink>
-
-                  <span onClick={logoutHandler}>
-                    <img
-                      src="../img/icons/logout.svg"
-                      alt="login-icon"
-                      className="logout-icon"
-                    />
-                  </span>
-                </ul>
+                </li>
               ) : (
-                <ul>
-                  <li>
-                    <span onClick={() => setLoginPopup(true)}>
-                      <img
-                        src="../img/icons/login.svg"
-                        alt="login-icon"
-                        className="logout-icon"
-                      />
-                    </span>
-                  </li>
-                </ul>
+                <></>
               )}
-            </div>
-            {loginPopup && (
-              <div className="popup-profil-container">
-                <div className="modal">
-                  <span className="cross" onClick={() => setLoginPopup(false)}>
-                    &#10005;
-                  </span>
-                  <div className="log-container">
-                    <Log signin={true} signup={false} forgot={false} />
-                  </div>
-                </div>
-              </div>
-            )}
-          </li>
-        </ul>
+              <li>
+                <div className="profile">
+                  {uid ? (
+                    <ul className="profile-nav">
+                      {userData.username}
+                      <NavLink exact to="/profil" className="profil-link">
+                        <img
+                          src={userData.picture}
+                          alt="user-pic"
+                          className="profile-logo"
+                        />{' '}
+                        {userData.pseudo}
+                      </NavLink>
 
-        <script src="App.js"></script>
+                      <span onClick={logoutHandler}>
+                        <img
+                          src="../img/icons/logout.svg"
+                          alt="login-icon"
+                          className="logout-icon"
+                        />
+                      </span>
+                    </ul>
+                  ) : (
+                    <ul>
+                      <li>
+                        <span onClick={() => setLoginPopup(true)}>
+                          <img
+                            src="../img/icons/login.svg"
+                            alt="login-icon"
+                            className="logout-icon"
+                          />
+                        </span>
+                      </li>
+                    </ul>
+                  )}
+                </div>
+                {loginPopup && (
+                  <div className="popup-profil-container">
+                    <div className="modal">
+                      <span
+                        className="cross"
+                        onClick={() => setLoginPopup(false)}
+                      >
+                        &#10005;
+                      </span>
+                      <div className="log-container">
+                        <Log signin={true} signup={false} forgot={false} />
+                      </div>
+                    </div>
+                  </div>
+                )}
+              </li>
+            </ul>
+          </div>
+        </div>
       </nav>
 
       {/* <div className="profile">
