@@ -3,7 +3,7 @@ import { NavLink } from 'react-router-dom'
 const Footer = () => {
   return (
     <footer className="footer">
-      <div className="row1">
+      <div className="row-footer">
         <div className="column3">
           <h2>AIT COURSE REVIEWS</h2>
           <p>

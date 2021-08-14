@@ -775,7 +775,7 @@ a {
     right: 0px;
     height: 92vh;
     top: 18vh;
-    background-color: #000;
+    background-color: #3e3ed6;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -814,6 +814,15 @@ a {
     transform: translateX(0px);
   }
 }
+
+@media screen and (max-width: 700px)
+{
+  .banner{
+    border: 0px;
+    display: block;
+  }
+}
+
 .row1 {
   display: flex;
   flex-direction: row;
@@ -846,7 +855,24 @@ a {
 }
 
 .footer {
+
   background-color: #f4f4f4;
+}
+
+.row-footer 
+{
+  display: flex;
+  flex-wrap: wrap;
+  padding: 1.25rem 1.875rem;
+}
+
+@media only screen and (max-width: 700px)
+{
+  .row-footer
+  {
+    justify-content: space-between;
+    justify-content: space-evenly;
+  }
 }
 .column3 {
   margin: 50px 20px 15px;

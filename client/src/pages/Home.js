@@ -5,49 +5,50 @@ import bg_banner from '../img/pineapple3.jpeg'
 const Home = () => {
   return (
     <>
-      <div className="banner" style={{ backgroundImage: `url(${bg_banner})` }}>
-        <div className="text-banner">
-          <h1>Enjoy Your New</h1>
-          <h1>Experiences With Us</h1>
+      <div className="banner-content">
+        <div className="banner" style={{ backgroundImage: `url(${bg_banner})` }}>
+          <div className="text-banner">
+            <h1>Enjoy Your New</h1>
+            <h1>Experiences With Us</h1>
+          </div>
+          <input
+            type="text"
+            className="input-bar"
+            placeholder="Search by keyword"
+          />
         </div>
-        <input
-          type="text"
-          className="input-bar"
-          placeholder="Search by keyword"
-        />
+
+        <div className="banner2">
+          <div className="row">
+            <div className="column">
+              <h1>Welcome To Course Reviews pourt</h1>
+              <p>
+                Welcome AIT students, let's explore our new websites that
+                providing lots of reviews and suggestions from AIT students.
+                Students cann freely give opinions in what the thing of some
+                particular course and share their experiences to another students.
+              </p>
+            </div>
+            <div className="column">
+              <img
+                src="../img/pineapple6.jpeg"
+                alt="student"
+                className="student-image"
+              />
+            </div>
+          </div>
+        </div>
       </div>
+        <main className="content">
+          <div className="row1">
+            <div className="column1">
+              <h1>Course Suggestions</h1>
+            </div>
 
-      <div className="banner2">
-        <div className="row">
-          <div className="column">
-            <h1>Welcome To Course Reviews pourt</h1>
-            <p>
-              Welcome AIT students, let's explore our new websites that
-              providing lots of reviews and suggestions from AIT students.
-              Students cann freely give opinions in what the thing of some
-              particular course and share their experiences to another students.
-            </p>
+            <div className="column1">
+              <a href="view_all">View All</a>
+            </div>
           </div>
-          <div className="column">
-            <img
-              src="../img/pineapple6.jpeg"
-              alt="student"
-              className="student-image"
-            />
-          </div>
-        </div>
-      </div>
-
-      <main className="content">
-        <div className="row1">
-          <div className="column1">
-            <h1>Course Suggestions</h1>
-          </div>
-
-          <div className="column1">
-            <a href="view_all">View All</a>
-          </div>
-        </div>
 
         <div className="row2">
           <div className="column2">
