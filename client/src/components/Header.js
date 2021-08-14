@@ -8,10 +8,15 @@ const Header = () => {
   const uid = useContext(UidContext)
   const userData = useSelector((state) => state.userReducer)
   const [loginPopup, setLoginPopup] = useState(false)
+  const [open,setOpen] = useState(false)
 
   const logoutHandler = () => {
     localStorage.removeItem('authToken')
     window.location.reload()
+  }
+
+  const onBtnClick = () => {
+    setOpen( (open) ? false : true )
   }
 
   return (
@@ -23,13 +28,13 @@ const Header = () => {
           className="logo"
         />
       </NavLink>
-      <nav className="nav-bar">
-        <div className="burger">
-                <div className="line1"></div>
-                <div className="line2"></div>
-                <div className="line3"></div>
-        </div>
-        <ul className="nav">
+      <button className="nav-button" onClick={ onBtnClick }>
+        <span className="stripe"></span>
+        <span className="stripe"></span>
+        <span className="stripe"></span>
+      </button>
+      <nav>
+        <ul className={ (open) ? "nav open" : "nav"}>
           <li>
             <NavLink exact to="/">
               Home
@@ -61,67 +66,13 @@ const Header = () => {
                 Admin
               </NavLink>
             </li>
-            
           ) : (
             <></>
           )}
-          <li>
-                <div className="profile">
-                  {uid ? (
-                    <ul className="profile-nav">
-                      {userData.username}
-                      <NavLink exact to="/profil" className="profil-link">
-                        <img
-                          src={userData.picture}
-                          alt="user-pic"
-                          className="profile-logo"
-                        />{' '}
-                        {userData.pseudo}
-                      </NavLink>
-
-                      <span onClick={logoutHandler}>
-                        <img
-                          src="../img/icons/logout.svg"
-                          alt="login-icon"
-                          className="logout-icon"
-                        />
-                      </span>
-                    </ul>
-                  ) : (
-                    <ul>
-                      <li>
-                        <span onClick={() => setLoginPopup(true)}>
-                          <img
-                            src="../img/icons/login.svg"
-                            alt="login-icon"
-                            className="logout-icon"
-                          />
-                        </span>
-                      </li>
-                    </ul>
-                  )}
-                </div>
-                {loginPopup && (
-                  <div className="popup-profil-container">
-                    <div className="modal">
-                      <span className="cross" onClick={() => setLoginPopup(false)}>
-                        &#10005;
-                      </span>
-                      <div className="log-container">
-                        <Log signin={true} signup={false} forgot={false} />
-                      </div>
-                    </div>
-                  </div>
-                )}
-          </li>
-          
         </ul>
-        
-
-        <script src="App.js"></script>
       </nav>
 
-      {/* <div className="profile">
+      <div className="profile">
         {uid ? (
           <ul className="profile-nav">
             {userData.username}
@@ -167,7 +118,7 @@ const Header = () => {
             </div>
           </div>
         </div>
-      )} */}
+      )}
     </header>
   )
 }
