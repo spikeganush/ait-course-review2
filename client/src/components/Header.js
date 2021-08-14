@@ -149,7 +149,7 @@ const Header = () => {
         </div>
       </nav>
 
-      {/* <div className="profile">
+      <div className="profile">
         {uid ? (
           <ul className="profile-nav">
             {userData.username}
@@ -195,7 +195,7 @@ const Header = () => {
             </div>
           </div>
         </div>
-      )} */}
+      )}
     </header>
   )
 }
