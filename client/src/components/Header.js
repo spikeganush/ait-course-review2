@@ -8,18 +8,13 @@ const Header = () => {
   const uid = useContext(UidContext)
   const userData = useSelector((state) => state.userReducer)
   const [loginPopup, setLoginPopup] = useState(false)
-<<<<<<< HEAD
   const [active, setActive] = useState('')
-=======
-  const [open,setOpen] = useState(false)
->>>>>>> 590da68d1348e19c137d78538fba9ede80f7395a
 
   const logoutHandler = () => {
     localStorage.removeItem('authToken')
     window.location.reload()
   }
 
-<<<<<<< HEAD
   const handleBurger = () => {
     if (!active) {
       setActive('nav-active')
@@ -46,15 +41,6 @@ const Header = () => {
   // }
 
   // navSlide();
-=======
-  const onBtnClick = () => {
-    setOpen( (open) ? false : true )
-  }
-
-  const onLinkClick = () => {
-    setOpen( false)
-  }
->>>>>>> 590da68d1348e19c137d78538fba9ede80f7395a
 
   return (
     <header className="header">
@@ -65,7 +51,6 @@ const Header = () => {
           className="logo"
         />
       </NavLink>
-<<<<<<< HEAD
       <nav className="nav-bar">
         <div className="burger" onClick={handleBurger}>
           <div className="line1"></div>
@@ -162,50 +147,6 @@ const Header = () => {
             </ul>
           </div>
         </div>
-=======
-      <button className="nav-button" onClick={ onBtnClick }>
-        <span className="stripe"></span>
-        <span className="stripe"></span>
-        <span className="stripe"></span>
-      </button>
-      <nav>
-        <ul className={ (open) ? "nav open" : "nav"}>
-          <li>
-            <NavLink exact to="/" onClick={onLinkClick}>
-              Home
-            </NavLink>
-          </li>
-          <li>
-            <NavLink exact to="/course" onClick={onLinkClick}>
-              Course
-            </NavLink>
-          </li>
-          <li>
-            <NavLink exact to="/news" onClick={onLinkClick}>
-              News
-            </NavLink>
-          </li>
-          <li>
-            <NavLink exact to="/aboutUs" onClick={onLinkClick}>
-              About us
-            </NavLink>
-          </li>
-          <li>
-            <NavLink exact to="/contact" onClick={onLinkClick}>
-              Contact
-            </NavLink>
-          </li>
-          {userData.admin ? (
-            <li>
-              <NavLink exact to="/admin" onClick={onLinkClick}>
-                Admin
-              </NavLink>
-            </li>
-          ) : (
-            <></>
-          )}
-        </ul>
->>>>>>> 590da68d1348e19c137d78538fba9ede80f7395a
       </nav>
 
       <div className="profile">
