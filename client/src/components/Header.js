@@ -42,6 +42,10 @@ const Header = () => {
 
   // navSlide();
 
+  const onLinkClick = () => {
+    setOpen(false)
+  }
+
   return (
     <header className="header">
       <NavLink exact to="/">
