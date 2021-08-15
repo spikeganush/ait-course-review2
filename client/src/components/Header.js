@@ -19,6 +19,10 @@ const Header = () => {
     setOpen( (open) ? false : true )
   }
 
+  const onLinkClick = () => {
+    setOpen( false)
+  }
+
   return (
     <header className="header">
       <NavLink exact to="/">
@@ -36,33 +40,33 @@ const Header = () => {
       <nav>
         <ul className={ (open) ? "nav open" : "nav"}>
           <li>
-            <NavLink exact to="/">
+            <NavLink exact to="/" onClick={onLinkClick}>
               Home
             </NavLink>
           </li>
           <li>
-            <NavLink exact to="/course">
+            <NavLink exact to="/course" onClick={onLinkClick}>
               Course
             </NavLink>
           </li>
           <li>
-            <NavLink exact to="/news">
+            <NavLink exact to="/news" onClick={onLinkClick}>
               News
             </NavLink>
           </li>
           <li>
-            <NavLink exact to="/aboutUs">
+            <NavLink exact to="/aboutUs" onClick={onLinkClick}>
               About us
             </NavLink>
           </li>
           <li>
-            <NavLink exact to="/contact">
+            <NavLink exact to="/contact" onClick={onLinkClick}>
               Contact
             </NavLink>
           </li>
           {userData.admin ? (
             <li>
-              <NavLink exact to="/admin">
+              <NavLink exact to="/admin" onClick={onLinkClick}>
                 Admin
               </NavLink>
             </li>
