@@ -625,7 +625,6 @@ a {
 .nav a:hover {
   color: blue;
 }
-
 .profile-nav {
   display: flex;
   align-items: center;

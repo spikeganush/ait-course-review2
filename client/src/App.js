@@ -4,10 +4,8 @@ import { UidContext } from './components/AppContext'
 import axios from 'axios'
 import { useDispatch } from 'react-redux'
 import { getUser } from './actions/user.actions'
-import Header from './components/Header'
 
-function App() 
-{
+function App() {
   const [uid, setUid] = useState(null)
   const dispatch = useDispatch()
 
@@ -41,7 +39,6 @@ function App()
       <Routes />
     </UidContext.Provider>
   )
-
 }
 
 export default App
