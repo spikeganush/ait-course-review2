@@ -1062,18 +1062,25 @@ button.nav-button {
     display: flex;
     order: 4;
   }
-  .banner
+  .banner 
   {
-    display: block;
+    /* display: block; */
+    flex-direction: column;
+    aspect-ratio: 1/1 ;
+  }
 
-  }
-  .banner h1
+  .text-banner 
   {
-    max-width: 400px;
-   
+    font-size: 1.5ch;
+    text-align: center;
   }
-  input
+
+  input 
   {
     min-width: 50%;
+  }
+  .text-banner 
+  {
+    margin:auto;
   }
 }
