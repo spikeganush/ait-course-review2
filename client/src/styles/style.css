@@ -999,6 +999,8 @@ body {
 }
 
 button.nav-button {
+
+  
   display: none;
   flex-direction: column;
   justify-content: space-evenly;
