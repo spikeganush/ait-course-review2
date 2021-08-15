@@ -1093,21 +1093,25 @@ button.nav-button {
     order: 4;
   }
 
-  .banner {
+  .banner 
+  {
     /* display: block; */
     flex-direction: column;
     aspect-ratio: 1/1 ;
   }
 
-  .text-banner {
+  .text-banner 
+  {
     font-size: 1.5ch;
     text-align: center;
   }
 
-  input {
+  input 
+  {
     min-width: 50%;
   }
-  .text-banner {
+  .text-banner 
+  {
     margin:auto;
   }
 }
