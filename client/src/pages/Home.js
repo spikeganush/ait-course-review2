@@ -21,7 +21,7 @@ const Home = () => {
         <div className="banner2">
           <div className="row">
             <div className="column">
-              <h1>Welcome To Course Reviews pourt</h1>
+              <h1>Welcome To Course Reviews</h1>
               <p>
                 Welcome AIT students, let's explore our new websites that
                 providing lots of reviews and suggestions from AIT students.

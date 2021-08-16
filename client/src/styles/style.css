@@ -711,6 +711,11 @@ a {
   color: white;
 }
 
+.column h1
+{
+  font-size: 50px;
+}
+
 .banner2 {
   /* hello Jun*/
   background: #000;
@@ -1013,7 +1018,7 @@ button.nav-button {
 }
 
 /* responsive for top bar navigation */
-@media screen and (max-width: 700px) {
+@media screen and (max-width: 800px) {
   .row1 {
     flex-direction: column;
   }
@@ -1050,6 +1055,12 @@ button.nav-button {
   }
   .column {
     margin: 0;
+  }
+
+  .column h1
+  {
+    font-size: 30px;
+    margin: 20px;
   }
   .column3 {
     margin: 0;
@@ -1104,6 +1115,10 @@ button.nav-button {
   {
     font-size: 1.5ch;
     text-align: center;
+  }
+
+  .logo{
+    max-width: 100px;
   }
 
   input 
