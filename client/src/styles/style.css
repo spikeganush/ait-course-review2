@@ -37,7 +37,7 @@ textarea {
   border-radius: 20px;
   /* width: 270px; */
   font-family: var(--font-1);
-  background: var(--white);
+  /* background: var(--white); */
 }
 
 textarea:focus {
