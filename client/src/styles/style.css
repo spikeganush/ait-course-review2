@@ -630,15 +630,7 @@ a {
 .nav a:hover {
   color: blue;
 }
-/* new navigation */
-.navbar {
-  display: flex;
-  justify-content: space-between;
-}
 
-.profile {
-  margin-left: 80px;
-}
 .profile-nav {
   display: flex;
   align-items: center;
@@ -720,6 +712,7 @@ a {
 }
 
 .banner2 {
+  /* hello Jun*/
   background: #000;
 }
 
@@ -731,91 +724,6 @@ a {
   max-width: 1200px;
   margin: auto;
   margin-bottom: 50px;
-}
-
-/* new responsive for navigation */
-.burger {
-  display: none;
-  position: relative;
-}
-
-.line1,
-.line2,
-.line3 {
-  width: 30px;
-  height: 3px;
-  background-color: #000;
-  margin: 5px;
-}
-
-.nav-burguer {
-  display: none;
-  position: absolute;
-  opacity: 0;
-  width: 165px;
-  right: 90px;
-}
-
-@media screen and (max-width: 1000px) {
-  .nav-burguer {
-    opacity: 0;
-    height: 0;
-    background-color: #3e3ed6;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    transform: translateX(100%);
-    transition: transform 0.5s ease-out;
-    z-index: 999;
-  }
-
-  .header {
-    justify-content: end;
-  }
-
-  .logo {
-    width: 60%;
-  }
-
-  .nav-burguer {
-    display: block;
-  }
-
-  .nav-bar {
-    flex-direction: column;
-  }
-
-  .nav li a {
-    color: #000;
-  }
-
-  .burger {
-    display: block;
-  }
-}
-
-.nav-active {
-  opacity: 1;
-  height: 92vh;
-  transform: translateX(100%);
-}
-
-@keyframes navLinkFade {
-  from {
-    opacity: 0;
-    transform: translateX(50px);
-  }
-  to {
-    opacity: 1;
-    transform: translateX(0px);
-  }
-}
-
-@media screen and (max-width: 700px) {
-  .banner {
-    border: 0px;
-    display: block;
-  }
 }
 
 .row1 {
@@ -853,18 +761,6 @@ a {
   background-color: #f4f4f4;
 }
 
-.row-footer {
-  display: flex;
-  flex-wrap: wrap;
-  padding: 1.25rem 1.875rem;
-}
-
-@media only screen and (max-width: 700px) {
-  .row-footer {
-    justify-content: space-between;
-    justify-content: space-evenly;
-  }
-}
 .column3 {
   margin: 50px 20px 15px;
   padding-left: 50px;
@@ -1120,6 +1016,7 @@ button.nav-button {
   background: transparent;
   padding: 5px;
 }
+
 .nav-button .stripe {
   display: block;
   height: 4px;
@@ -1132,8 +1029,8 @@ button.nav-button {
   .row1 {
     flex-direction: column;
   }
-  .input-bar {
-    min-width: 100%;
+  input.input-bar {
+    min-width: auto;
     max-width: 100%;
     margin: 1em;
     position: static;
@@ -1182,7 +1079,7 @@ button.nav-button {
 
   .nav {
     position: fixed;
-    background-color: rgba(0, 0, 0, 0.6);
+    background-color: rgba(0, 0, 0, 0.8);
     top: 154px;
     left: 0;
     /* min-height: calc( 100vh - 154px ); */
@@ -1202,8 +1099,27 @@ button.nav-button {
     padding: 1em;
     display: block;
   }
+
   button.nav-button {
     display: flex;
     order: 4;
+  }
+
+  .banner {
+    /* display: block; */
+    flex-direction: column;
+    aspect-ratio: 1/1;
+  }
+
+  .text-banner {
+    font-size: 1.5ch;
+    text-align: center;
+  }
+
+  input {
+    min-width: 50%;
+  }
+  .text-banner {
+    margin: auto;
   }
 }
