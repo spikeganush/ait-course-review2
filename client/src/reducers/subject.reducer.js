@@ -1,5 +1,6 @@
 import {
   GET_SUBJECTS,
+  GET_ALL_SUBJECTS,
   GET_SUBJECT,
   UPLOAD_PHOTO,
   UPDATE_SUBJECT,
@@ -11,6 +12,8 @@ const initialState = {}
 export default function usersReducer(state = initialState, action) {
   switch (action.type) {
     case GET_SUBJECTS:
+      return action.payload
+    case GET_ALL_SUBJECTS:
       return action.payload
     case GET_SUBJECT:
       return action.payload

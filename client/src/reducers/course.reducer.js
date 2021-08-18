@@ -1,6 +1,7 @@
 import {
   GET_COURSE,
   GET_COURSES,
+  GET_ALL_COURSES,
   UPLOAD_PHOTO,
   UPDATE_COURSE,
   ADD_COURSE,
@@ -13,6 +14,8 @@ export default function usersReducer(state = initialState, action) {
     case GET_COURSE:
       return action.payload
     case GET_COURSES:
+      return action.payload
+    case GET_ALL_COURSES:
       return action.payload
     case UPLOAD_PHOTO:
       return {

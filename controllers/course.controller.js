@@ -192,6 +192,68 @@ module.exports.review = (req, res) => {
   }
 }
 
+module.exports.addReview = async (req, res) => {
+  if (!ObjectID.isValid(req.params.id))
+    return res.status(400).send('ID unknown: ' + req.params.id)
+  if (req.file !== null) {
+    try {
+      await CourseModel.findOneAndUpdate(
+        req.params.id,
+
+        {
+          $set: {
+            title: req.body.title,
+            code: req.body.code,
+            summarize: req.body.summarize,
+            description: req.body.description,
+            photo: req.body.file,
+          },
+        },
+        { new: true, upsert: true, setDefaultsOnInsert: true },
+        (err, docs) => {
+          if (!err) return res.send(docs)
+          if (err) {
+            res.status(500).json({
+              success: false,
+              error: err.message,
+            })
+          }
+        }
+      )
+    } catch (err) {
+      return res.status(500).json({ message: err })
+    }
+  } else {
+    try {
+      await CourseModel.findOneAndUpdate(
+        req.params.id,
+
+        {
+          $set: {
+            title: req.body.title,
+            code: req.body.code,
+            summarize: req.body.summarize,
+            description: req.body.description,
+            photo: req.body.existingFile,
+          },
+        },
+        { new: true, upsert: true, setDefaultsOnInsert: true },
+        (err, docs) => {
+          if (!err) return res.send(docs)
+          if (err) {
+            res.status(500).json({
+              success: false,
+              error: err.message,
+            })
+          }
+        }
+      )
+    } catch (err) {
+      return res.status(500).json({ message: err })
+    }
+  }
+}
+
 module.exports.editReview = (req, res) => {
   if (!ObjectID.isValid(req.params.id))
     return res.status(400).send('ID unknown : ' + req.params.id)
