@@ -8,7 +8,7 @@ const Header = () => {
   const uid = useContext(UidContext)
   const userData = useSelector((state) => state.userReducer)
   const [loginPopup, setLoginPopup] = useState(false)
-  const [open,setOpen] = useState(false)
+  const [open, setOpen] = useState(false)
 
   const logoutHandler = () => {
     localStorage.removeItem('authToken')
@@ -16,11 +16,11 @@ const Header = () => {
   }
 
   const onBtnClick = () => {
-    setOpen( (open) ? false : true )
+    setOpen(open ? false : true)
   }
 
   const onLinkClick = () => {
-    setOpen( false)
+    setOpen(false)
   }
 
   return (
@@ -32,13 +32,13 @@ const Header = () => {
           className="logo"
         />
       </NavLink>
-      <button className="nav-button" onClick={ onBtnClick }>
+      <button className="nav-button" onClick={onBtnClick}>
         <span className="stripe"></span>
         <span className="stripe"></span>
         <span className="stripe"></span>
       </button>
       <nav>
-        <ul className={ (open) ? "nav open" : "nav"}>
+        <ul className={open ? 'nav open' : 'nav'}>
           <li>
             <NavLink exact to="/" onClick={onLinkClick}>
               Home

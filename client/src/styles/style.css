@@ -37,7 +37,7 @@ textarea {
   border-radius: 20px;
   /* width: 270px; */
   font-family: var(--font-1);
-  background: var(--white);
+  /* background: var(--white); */
 }
 
 textarea:focus {
@@ -297,7 +297,7 @@ i:hover {
   }
 }
 
-.profil-page .update-container>div {
+.profil-page .update-container > div {
   background: var(--color-4);
   border-radius: 20px;
   padding: 25px;
@@ -305,7 +305,7 @@ i:hover {
 }
 
 @media screen and (max-width: 700px) {
-  .profil-page .update-container>div {
+  .profil-page .update-container > div {
     margin: 10px 10px;
   }
 }
@@ -736,7 +736,6 @@ a {
   flex-direction: row;
 }
 
-
 .column1 {
   margin: 20px;
   margin-right: 150px;
@@ -867,11 +866,21 @@ a {
   transition: 0.2s;
 }
 
-.popup-profil-container .modal .connection-form .form-container ul .active-btn:hover {
+.popup-profil-container
+  .modal
+  .connection-form
+  .form-container
+  ul
+  .active-btn:hover {
   background: var(--color-2);
 }
 
-.popup-profil-container .modal .connection-form .form-container ul li:not(.active-btn):hover {
+.popup-profil-container
+  .modal
+  .connection-form
+  .form-container
+  ul
+  li:not(.active-btn):hover {
   transform: translateX(3px);
 }
 
@@ -887,7 +896,12 @@ a {
   border-radius: 20px;
 }
 
-.popup-profil-container .modal .connection-form .form-container form input:focus {
+.popup-profil-container
+  .modal
+  .connection-form
+  .form-container
+  form
+  input:focus {
   box-shadow: 0 0 3px rgba(51, 51, 51, 0.2);
 }
 
@@ -999,8 +1013,6 @@ body {
 }
 
 button.nav-button {
-
-
   display: none;
   flex-direction: column;
   justify-content: space-evenly;
@@ -1093,7 +1105,7 @@ button.nav-button {
     transition: height 0.5s;
   }
 
-  .nav>li>a {
+  .nav > li > a {
     color: white;
     padding: 1em;
     display: block;
@@ -1108,7 +1120,7 @@ button.nav-button {
   {
     /* display: block; */
     flex-direction: column;
-    aspect-ratio: 1/1 ;
+    aspect-ratio: 1/1;
   }
 
   .text-banner 
