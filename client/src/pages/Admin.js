@@ -4,8 +4,8 @@ import { useDispatch, useSelector } from 'react-redux'
 import '../components/auth/LoginScreen'
 
 import { isEmpty } from '../components/Utils'
-import { getCourses } from '../actions/course.action'
-import { getSubjects } from '../actions/subject.actions'
+import { getAllCourses } from '../actions/course.action'
+import { getAllSubjects } from '../actions/subject.actions'
 import DeleteCourse from '../components/Admin/DeleteCourse'
 import DeleteSubject from '../components/Admin/DeleteSubject'
 import AddCourseForm from '../components/Admin/AddCourseForm'
@@ -21,8 +21,8 @@ const Admin = () => {
 
   useEffect(() => {
     if (loadCourses) {
-      dispatch(getCourses())
-      dispatch(getSubjects())
+      dispatch(getAllCourses())
+      dispatch(getAllSubjects())
       setLoadCourses(false)
     }
   }, [loadCourses, dispatch])
