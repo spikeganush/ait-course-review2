@@ -5,7 +5,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { getCourses } from '../actions/course.action'
 import { getSubjects } from '../actions/subject.actions'
 import { isEmpty } from '../components/Utils'
-import { useHistory } from 'react-router-dom'
+import { useHistory, NavLink } from 'react-router-dom'
 
 const Home = () => {
   const dispatch = useDispatch()
@@ -69,7 +69,9 @@ const Home = () => {
           </div>
 
           <div className="column1">
-            <a href="view_all">View All</a>
+            <NavLink exact to="/courses">
+              View all
+            </NavLink>
           </div>
         </div>
 
