@@ -10,6 +10,11 @@ export const DELETE_SUBJECT = 'DELETE_SUBJECT'
 
 export const GET_SUBJECT_ERRORS = 'GET_SUBJECT_ERRORS'
 
+//Comment
+export const ADD_REVIEW = 'ADD_REVIEW'
+
+//---------------------
+
 export const getSubject = (sid) => {
   return (dispatch) => {
     return axios
@@ -112,6 +117,24 @@ export const deleteSubject = (subjectId) => {
       .then((res) => {
         dispatch({ type: DELETE_SUBJECT, payload: { subjectId } })
       })
+      .catch((err) => console.log(err))
+  }
+}
+
+export const addReview = (
+  courseId,
+  reviewerId,
+  reviewerUsername,
+  review,
+  reviewMark
+) => {
+  return (dispatch) => {
+    return axios({
+      method: 'patch',
+      url: `/api/subject/review/${courseId}`,
+      data: { reviewerId, reviewerUsername, review, reviewMark },
+    })
+      .then((res) => dispatch({ type: ADD_REVIEW, payload: { courseId } }))
       .catch((err) => console.log(err))
   }
 }

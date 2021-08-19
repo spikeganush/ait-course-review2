@@ -15,6 +15,8 @@ import Contact from '../../pages/Contact'
 import admin from '../../pages/Admin'
 import Header from '../Header'
 import Search from '../../pages/Search'
+import Subject from '../../pages/Subject'
+import Subjects from '../../pages/Subjects'
 
 // Screens
 // import LoginScreen from '../auth/LoginScreen'
@@ -33,6 +35,8 @@ const index = () => {
         <Route path="/profil" exact component={Profil} />
         <Route path="/course/:id" exact component={Course} />
         <Route path="/courses/" component={Courses} />
+        <Route path="/subject/:id" exact component={Subject} />
+        <Route path="/subjects/" component={Subjects} />
         <Route path="/news" exact component={News} />
         <Route path="/aboutUs" exact component={AboutUs} />
         <Route path="/contact" exact component={Contact} />

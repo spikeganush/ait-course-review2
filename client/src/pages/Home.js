@@ -138,6 +138,7 @@ const Home = () => {
                     src={subject.photo}
                     alt="subject"
                     className="course-photo"
+                    onClick={() => handleOpenCourse(subject._id)}
                   />
                   <h3>{subject.title}</h3>
                   <p>{subject.summarize}</p>
