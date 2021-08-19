@@ -28,6 +28,7 @@ const Course = () => {
 
   useEffect(() => {
     dispatch(getCourse(id))
+    setActivateButton(true)
   }, [dispatch, id])
 
   const handleReview = (e) => {

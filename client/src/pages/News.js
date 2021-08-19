@@ -1,5 +1,4 @@
 import React from 'react'
-import Footer from '../components/Footer'
 import bg_banner from '../img/news_img5.jpeg'
 import news_img1 from '../img/news_img4.jpeg'
 import news_img2 from '../img/news_img2.jpeg'
@@ -33,38 +32,26 @@ const News = () => {
                 <input type="radio" name="input-radio" id="radio3" />
                 <input type="radio" name="input-radio" id="radio4" />
                 <div className="img-container first">
-                  <img
-                    src={news_img3}
-                    alt="news-image"
-                    className="student-image"
-                  />
+                  <img src={news_img3} alt="news" className="student-image" />
                 </div>
                 <div className="img-container">
-                  <img
-                    src={news_img1}
-                    alt="news-image"
-                    className="student-image"
-                  />
+                  <img src={news_img1} alt="news" className="student-image" />
                 </div>
                 <div className="img-container">
-                  <img
-                    src={news_img2}
-                    alt="news-image"
-                    className="student-image"
-                  />
+                  <img src={news_img2} alt="news" className="student-image" />
                 </div>
                 <div className="img-container">
                   <img
                     src="../img/pineapple6.jpeg"
-                    alt="news-image"
+                    alt="news"
                     className="student-image"
                   />
                 </div>
                 <div className="nav-manual">
-                  <label for="radio1" className="manual-btn"></label>
-                  <label for="radio2" className="manual-btn"></label>
-                  <label for="radio3" className="manual-btn"></label>
-                  <label for="radio4" className="manual-btn"></label>
+                  <label htmlFor="radio1" className="manual-btn"></label>
+                  <label htmlFor="radio2" className="manual-btn"></label>
+                  <label htmlFor="radio3" className="manual-btn"></label>
+                  <label htmlFor="radio4" className="manual-btn"></label>
                 </div>
               </div>
             </div>
@@ -84,7 +71,7 @@ const News = () => {
         </div>
         <div className="row2">
           <div className="column-news2">
-            <img src={news_img4} alt="news-image" className="course-photo" />
+            <img src={news_img4} alt="news" className="course-photo" />
             <p>13 AUGUST 2021</p>
             <h2>Campus reopen 2021</h2>
             <p>
@@ -94,7 +81,7 @@ const News = () => {
             </p>
           </div>
           <div className="column-news2">
-            <img src={news_img5} alt="news-image" className="course-photo" />
+            <img src={news_img5} alt="news" className="course-photo" />
             <p>24 JUNE 2021</p>
             <h2>
               Helping students adapt to online learning sets them up for success
@@ -109,7 +96,7 @@ const News = () => {
         </div>
         <div className="row2">
           <div className="column-news2">
-            <img src={news_img6} alt="news-image" className="course-photo" />
+            <img src={news_img6} alt="news" className="course-photo" />
             <p>13 AUGUST 2021</p>
             <h2>Top programming languages</h2>
             <p>
@@ -119,7 +106,7 @@ const News = () => {
             </p>
           </div>
           <div className="column-news2">
-            <img src={news_img7} alt="news-image" className="course-photo" />
+            <img src={news_img7} alt="news" className="course-photo" />
             <p>24 JUNE 2021</p>
             <h2>Covid 19 Vaccination</h2>
             <p>
@@ -130,7 +117,7 @@ const News = () => {
             </p>
           </div>
           <div className="column-news2">
-            <img src={news_img5} alt="news-image" className="course-photo" />
+            <img src={news_img5} alt="news" className="course-photo" />
             <p>24 JUNE 2021</p>
             <h2>Most Reviews Subject</h2>
             <p>
