@@ -122,7 +122,7 @@ export const deleteSubject = (subjectId) => {
 }
 
 export const addReview = (
-  courseId,
+  subjectId,
   reviewerId,
   reviewerUsername,
   review,
@@ -131,10 +131,10 @@ export const addReview = (
   return (dispatch) => {
     return axios({
       method: 'patch',
-      url: `/api/subject/review/${courseId}`,
+      url: `/api/subject/review/${subjectId}`,
       data: { reviewerId, reviewerUsername, review, reviewMark },
     })
-      .then((res) => dispatch({ type: ADD_REVIEW, payload: { courseId } }))
+      .then((res) => dispatch({ type: ADD_REVIEW, payload: { subjectId } }))
       .catch((err) => console.log(err))
   }
 }

@@ -8,7 +8,7 @@ import ReactStars from 'react-stars'
 const Subjects = () => {
   const [openList, setOpenList] = useState(false)
   const history = useHistory()
-  const subjectsData = useSelector((state) => state.courseReducer)
+  const subjectsData = useSelector((state) => state.subjectReducer)
   const dispatch = useDispatch()
   let averageMark = 0
 
@@ -22,13 +22,13 @@ const Subjects = () => {
 
   const average = (id) => {
     if (!isEmpty(subjectsData[0])) {
-      subjectsData.map((course) => {
-        if (course._id === id) {
-          const totalMark = course.reviews.reduce(
+      subjectsData.map((subject) => {
+        if (subject._id === id) {
+          const totalMark = subject.reviews.reduce(
             (prev, cur) => prev + cur.reviewMark,
             0
           )
-          averageMark = totalMark / course.reviews.length
+          averageMark = totalMark / subject.reviews.length
           return averageMark
         }
         return averageMark
@@ -73,31 +73,30 @@ const Subjects = () => {
       </div>
       <div className="row3">
         {!isEmpty(subjectsData[0]) &&
-          subjectsData.map((course) => {
+          subjectsData.map((subject) => {
             return (
               <div
                 className="column3"
-                onClick={() => handleOpenCourse(course._id)}
-                key={course._id}
+                onClick={() => handleOpenCourse(subject._id)}
+                key={subject._id}
               >
                 <img
-                  src={__dirname + course.photo}
+                  src={__dirname + subject.photo}
                   alt="course"
                   className="course-photo"
                 />
-                <h3>{course.title}</h3>
-                <p>{course.summarize}</p>
+                <h3>{subject.title}</h3>
+                <p>{subject.summarize}</p>
                 <div className="star-ranking">
                   <ReactStars
                     size={40}
-                    value={average(course._id)}
+                    value={average(subject._id)}
                     edit={false}
                   />
-                  {console.log(average(course._id))}
-                  {course.reviews
-                    ? course.reviews.length > 0 && (
+                  {subject.reviews
+                    ? subject.reviews.length > 0 && (
                         <div className="read-review">
-                          ({course.reviews.length})
+                          ({subject.reviews.length})
                         </div>
                       )
                     : '(0)'}

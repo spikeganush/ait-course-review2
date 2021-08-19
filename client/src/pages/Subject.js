@@ -3,7 +3,7 @@ import { useParams } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
 import { getSubject, addReview } from '../actions/subject.actions'
 import ReactStars from 'react-stars'
-import CardReviews from '../components/CardReviews'
+import CardReviewsSubjects from '../components/CardReviewsSubjects'
 import { isEmpty } from '../components/Utils'
 
 const Subject = () => {
@@ -97,7 +97,7 @@ const Subject = () => {
           )
         ) : null}
 
-        {readReview && <CardReviews review={subjectData} />}
+        {readReview && <CardReviewsSubjects review={subjectData} />}
       </div>
     </div>
   )

@@ -13,6 +13,7 @@ const Course = () => {
   const { id } = useParams()
   const [leaveReview, setLeaveReview] = useState(false)
   const [readReview, setReadReview] = useState(false)
+  const [activateButton, setActivateButton] = useState(true)
 
   const courseMarks = !isEmpty(courseData._id)
     ? courseData.reviews.map((review) => review.reviewMark)
@@ -90,7 +91,15 @@ const Course = () => {
                 edit={true}
                 onChange={(newValue) => setStars(newValue)}
               />
-              <input type="submit" value="Send" />
+              {activateButton ? (
+                <input type="submit" value="Send" />
+              ) : (
+                <input
+                  type="submit"
+                  value="You can review only one time"
+                  disabled="disabled"
+                />
+              )}
             </form>
           ) : (
             <p>You have to be login to leave a review.</p>

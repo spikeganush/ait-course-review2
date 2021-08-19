@@ -1,6 +1,8 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 import './styles/style.css'
+import 'semantic-ui-css/semantic.min.css'
+
 import { Provider } from 'react-redux'
 import { applyMiddleware, createStore } from 'redux'
 import App from './App'

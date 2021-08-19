@@ -45,8 +45,8 @@ const Header = () => {
             </NavLink>
           </li>
           <li>
-            <NavLink exact to="/courses" onClick={onLinkClick}>
-              Courses
+            <NavLink exact to="/course" onClick={onLinkClick}>
+              Course
             </NavLink>
           </li>
           <li>
@@ -82,7 +82,7 @@ const Header = () => {
             {userData.username}
             <NavLink exact to="/profil" className="profil-link">
               <img
-                src={__dirname + userData.picture}
+                src={userData.picture}
                 alt="user-pic"
                 className="profile-logo"
               />{' '}

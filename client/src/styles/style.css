@@ -761,19 +761,20 @@ a {
   flex-direction: row;
 }
 
-.row3 > * {
-  flex: 1 1 360px;
-}
-
 .row3 {
   display: flex;
   flex-wrap: wrap;
 }
 
+.row3 > * {
+  flex: 1 1 360px;
+}
+
 .column3 {
   font-family: sans-serif;
   text-align: center;
-  max-width: 50%;
+  max-width: 40%;
+  margin: 50px 20px 15px;
   background-color: #f4f4f4;
   margin: 10px;
   padding: 1rem;
@@ -794,12 +795,9 @@ a {
   padding: 10px;
 }
 
-.column3 {
-  margin: 50px 20px 15px;
-  padding-left: 50px;
-  max-width: 40%;
-  font-family: sans-serif;
-  text-align: center;
+.row-footer {
+  display: flex;
+  justify-content: space-between;
 }
 
 .column4 {
@@ -821,15 +819,6 @@ a {
 
 .course-photo {
   width: 100%;
-}
-
-.star img {
-  width: 100%;
-}
-
-.star-image {
-  max-width: 20px;
-  margin-bottom: 10px;
 }
 
 .nav1 {
@@ -948,6 +937,7 @@ body {
   line-height: 1.7;
   background: #eee;
   color: #333;
+  line-height: 2em !important;
 }
 
 .form-group,
@@ -1082,6 +1072,13 @@ button.nav-button {
   background-color: lightblue;
   border-radius: 8px;
   padding: 10px 35px 10px 35px;
+}
+
+.write-review input[type='submit']:disabled {
+  background-color: darkgrey;
+  border-radius: 8px;
+  padding: 10px 35px 10px 35px;
+  cursor: none;
 }
 
 .reviews-container {

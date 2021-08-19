@@ -5,6 +5,7 @@ import { getCourses } from '../actions/course.action'
 import { getSubjects } from '../actions/subject.actions'
 import { isEmpty } from '../components/Utils'
 import { useHistory, NavLink } from 'react-router-dom'
+import ReactStars from 'react-stars'
 
 const Home = () => {
   const dispatch = useDispatch()
@@ -12,14 +13,55 @@ const Home = () => {
   const subjectData = useSelector((state) => state.subjectReducer)
   const history = useHistory()
 
+  let averageMark = 0
+  let averageMarkSubjects = 0
+
   const handleOpenCourse = (props) => {
     history.push(`/course/${props}`)
+  }
+
+  const handleOpenSubject = (props) => {
+    history.push(`/subject/${props}`)
   }
 
   useEffect(() => {
     dispatch(getCourses(3))
     dispatch(getSubjects(3))
   }, [dispatch])
+
+  const average = (id) => {
+    if (!isEmpty(courseData[0])) {
+      courseData.map((course) => {
+        if (course._id === id) {
+          const totalMark = course.reviews.reduce(
+            (prev, cur) => prev + cur.reviewMark,
+            0
+          )
+          averageMark = totalMark / course.reviews.length
+          return averageMark
+        }
+        return averageMark
+      })
+    }
+    return averageMark
+  }
+
+  const averageSubject = (id) => {
+    if (!isEmpty(subjectData[0])) {
+      subjectData.map((subject) => {
+        if (subject._id === id) {
+          const totalMark = subject.reviews.reduce(
+            (prev, cur) => prev + cur.reviewMark,
+            0
+          )
+          averageMarkSubjects = totalMark / subject.reviews.length
+          return averageMarkSubjects
+        }
+        return averageMarkSubjects
+      })
+    }
+    return averageMarkSubjects
+  }
 
   return (
     <>
@@ -88,32 +130,18 @@ const Home = () => {
                   <h3>{course.title}</h3>
                   <p>{course.summarize}</p>
                   <div className="star-ranking">
-                    <img
-                      src="https://i.ibb.co/2kW5mnM/star.png"
-                      alt="star-checked"
-                      className="star-image"
+                    <ReactStars
+                      size={40}
+                      value={average(course._id)}
+                      edit={false}
                     />
-                    <img
-                      src="https://i.ibb.co/2kW5mnM/star.png"
-                      alt="star-checked"
-                      className="star-image"
-                    />
-                    <img
-                      src="https://i.ibb.co/2kW5mnM/star.png"
-                      alt="star-checked"
-                      className="star-image"
-                    />
-                    <img
-                      src="https://i.ibb.co/TwYYb93/star-1.png"
-                      alt="star-unchecked"
-                      className="star-image"
-                    />
-                    <img
-                      src="https://i.ibb.co/TwYYb93/star-1.png"
-                      alt="star-unchecked"
-                      className="star-image"
-                    />
-                    <div className="number-ranking">(120)</div>
+                    {course.reviews
+                      ? course.reviews.length > 0 && (
+                          <div className="read-review">
+                            ({course.reviews.length})
+                          </div>
+                        )
+                      : '(0)'}
                   </div>
                 </div>
               )
@@ -125,7 +153,9 @@ const Home = () => {
             <h1>Most Reviews Subject</h1>
           </div>
           <div className="column1">
-            <a href="view_all">View all</a>
+            <NavLink exact to="/subjects">
+              View all
+            </NavLink>
           </div>
         </div>
 
@@ -138,37 +168,23 @@ const Home = () => {
                     src={subject.photo}
                     alt="subject"
                     className="course-photo"
-                    onClick={() => handleOpenCourse(subject._id)}
+                    onClick={() => handleOpenSubject(subject._id)}
                   />
                   <h3>{subject.title}</h3>
                   <p>{subject.summarize}</p>
                   <div className="star-ranking">
-                    <img
-                      src="https://i.ibb.co/2kW5mnM/star.png"
-                      alt="star-checked"
-                      className="star-image"
+                    <ReactStars
+                      size={40}
+                      value={averageSubject(subject._id)}
+                      edit={false}
                     />
-                    <img
-                      src="https://i.ibb.co/2kW5mnM/star.png"
-                      alt="star-checked"
-                      className="star-image"
-                    />
-                    <img
-                      src="https://i.ibb.co/2kW5mnM/star.png"
-                      alt="star-checked"
-                      className="star-image"
-                    />
-                    <img
-                      src="https://i.ibb.co/TwYYb93/star-1.png"
-                      alt="star-unchecked"
-                      className="star-image"
-                    />
-                    <img
-                      src="https://i.ibb.co/TwYYb93/star-1.png"
-                      alt="star-unchecked"
-                      className="star-image"
-                    />
-                    <div className="number-ranking">(120)</div>
+                    {subject.reviews
+                      ? subject.reviews.length > 0 && (
+                          <div className="read-review">
+                            ({subject.reviews.length})
+                          </div>
+                        )
+                      : '(0)'}
                   </div>
                 </div>
               )

@@ -93,7 +93,6 @@ const Courses = () => {
                     value={average(course._id)}
                     edit={false}
                   />
-                  {console.log(average(course._id))}
                   {course.reviews
                     ? course.reviews.length > 0 && (
                         <div className="read-review">

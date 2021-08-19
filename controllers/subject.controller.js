@@ -118,7 +118,7 @@ module.exports.addReview = (req, res) => {
     return res.status(400).send('ID unknown : ' + req.params.id)
 
   try {
-    return CourseModel.findByIdAndUpdate(
+    return SubjectModel.findByIdAndUpdate(
       req.params.id,
       {
         $push: {
