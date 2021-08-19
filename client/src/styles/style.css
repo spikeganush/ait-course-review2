@@ -1346,3 +1346,91 @@ button.nav-button {
 .search-dropdown.active .dropdown-list {
   display: block;
 }
+
+.column-news1
+{
+  /* margin: 100px 150px 100px; */
+  flex: 1;
+  font-family: sans-serif;
+  padding: 3rem;
+}
+
+.column-news1 h1
+{
+  padding-bottom: 1rem;
+}
+
+.slide-frame
+{
+  height: 420px;
+  width: 630px;
+  overflow: hidden;
+}
+
+.slide-image
+{
+  width: 500%;
+  height: 300px;
+  display: flex;
+}
+
+.slide-image input
+{
+  display: none;
+}
+.img-container
+{
+  width: 20%;
+  transition: 2s;
+}
+
+.img-container img
+{
+  width: 800px;
+  height: 500px;
+}
+
+#radio1:checked ~ .first
+{
+  margin-left: 0;
+}
+#radio2:checked ~ .first
+{
+  margin-left: -20%;
+}
+#radio3:checked ~ .first
+{
+  margin-left: -40%;
+}
+#radio4:checked ~ .first
+{
+  margin-left: -60%;
+}
+
+.nav-manual
+{
+  position: absolute;
+  width: 800px;
+  display: flex;
+  margin-top: 380px;
+  margin-right: 100px;
+  justify-content: center;
+}
+.manual-btn
+{
+  border: 2px solid #555;
+  padding: 5px;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: 1s;
+}
+.manual-btn:hover
+{
+  background: #555;
+}
+.manual-btn:not(:last-child)
+{
+  margin-right: 40px;
+}
+
+
