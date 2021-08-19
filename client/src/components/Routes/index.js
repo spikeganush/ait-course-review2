@@ -7,6 +7,7 @@ import {
 } from 'react-router-dom'
 import Home from '../../pages/Home'
 import Profil from '../../pages/Profil'
+import Course from '../../pages/Course'
 import Courses from '../../pages/Courses'
 import News from '../../pages/News'
 import AboutUs from '../../pages/AboutUs'
@@ -30,6 +31,7 @@ const index = () => {
       <Switch>
         <Route path="/" exact component={Home} />
         <Route path="/profil" exact component={Profil} />
+        <Route path="/course/:id" exact component={Course} />
         <Route path="/courses/" component={Courses} />
         <Route path="/news" exact component={News} />
         <Route path="/aboutUs" exact component={AboutUs} />

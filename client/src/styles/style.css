@@ -88,13 +88,7 @@ i:hover {
   display: flex;
   align-items: center;
   gap: 0.1em;
-  justify-content: center;
-  padding: 1rem;
-}
-
-.number-ranking
-{
-  margin-left: 1rem;
+  align-content: center;
 }
 
 .error {
@@ -744,7 +738,7 @@ a {
 .row1 {
   display: flex;
   flex-direction: row;
-  /* align-items: center; */
+  align-items: center;
 }
 
 .column1 {
@@ -762,6 +756,23 @@ a {
   flex-direction: row;
 }
 
+.row3 > * {
+  flex: 1 1 360px;
+}
+
+.row3 {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.column3 {
+  font-family: sans-serif;
+  text-align: center;
+  max-width: 50%;
+  background-color: #f4f4f4;
+  margin: 10px;
+  padding: 1rem;
+}
 
 .column2 {
   flex: 1;
@@ -775,9 +786,7 @@ a {
 
 .footer {
   background-color: #f4f4f4;
-  padding: 10px;
 }
-
 
 .column3 {
   margin: 50px 20px 15px;
@@ -1119,7 +1128,6 @@ button.nav-button {
 @media screen and (max-width: 800px) {
   .row1 {
     flex-direction: column;
-    margin: 20px;
   }
   input.input-bar {
     min-width: auto;
@@ -1156,13 +1164,7 @@ button.nav-button {
     margin: 0;
   }
 
-  .student-image 
-  {
-    max-width: 100%;
-    padding: 20px;
-  }
-  .column h1
-  {
+  .column h1 {
     font-size: 30px;
     margin: 20px;
   }
@@ -1246,35 +1248,13 @@ button.nav-button {
 .column-course {
   margin: 60px;
 }
-.row3 > * {
-  flex: 1 1 360px;
-}
-
-.row3 {
-  display: flex;
-  flex-wrap: wrap;
-}
-
-.column3 {
-  font-family: sans-serif;
-  text-align: center;
-  background-color: #f4f4f4;
-  margin: 10px;
-  padding: 1rem;
-}
-
-.column3 h3 
-{
-  margin: 1rem;
-}
 
 .course-search-bar {
   justify-content: center;
   text-align: center;
 }
-.course-input-bar
-{
-  min-width: 660px;
+.course-input-bar {
+  min-width: 600px;
   height: 60px;
   border: 2px solid white;
   border-radius: 20px;
@@ -1350,121 +1330,3 @@ button.nav-button {
 .search-dropdown.active .dropdown-list {
   display: block;
 }
-
-/* responsive for top bar navigation */
-@media screen and (max-width: 790px) 
-{
-  .column-course
-  {
-    margin: 0;
-  }
-  .search-dropdown
-  {
-    display: none;
-  }
-
-  input.course-input-bar {
-    min-width: auto;
-    max-width: 100%;
-    margin: 1em;
-    position: static;
-    background-color: white;
-    font-size: 1rem;
-    padding: 0.5rem;
-    height: auto;
-  }
-  .column1
-  {
-    margin: 10px;
-    margin-right: auto;
-  }
-
-}
-
-/* CSS for news page */
-.column-news1
-{
-  /* margin: 100px 150px 100px; */
-  flex: 1;
-  font-family: sans-serif;
-  padding: 3rem;
-}
-
-.column-news1 h1
-{
-  padding-bottom: 1rem;
-}
-
-.slide-frame
-{
-  height: 420px;
-  width: 630px;
-  overflow: hidden;
-}
-
-.slide-image
-{
-  width: 500%;
-  height: 300px;
-  display: flex;
-}
-
-.slide-image input
-{
-  display: none;
-}
-.img-container
-{
-  width: 20%;
-  transition: 2s;
-}
-
-.img-container img
-{
-  width: 800px;
-  height: 500px;
-}
-
-#radio1:checked ~ .first
-{
-  margin-left: 0;
-}
-#radio2:checked ~ .first
-{
-  margin-left: -20%;
-}
-#radio3:checked ~ .first
-{
-  margin-left: -40%;
-}
-#radio4:checked ~ .first
-{
-  margin-left: -60%;
-}
-
-.nav-manual
-{
-  position: absolute;
-  width: 800px;
-  display: flex;
-  margin-top: 380px;
-  margin-right: 100px;
-  justify-content: center;
-}
-.manual-btn
-{
-  border: 2px solid #555;
-  padding: 5px;
-  border-radius: 10px;
-  cursor: pointer;
-  transition: 1s;
-}
-.manual-btn:hover
-{
-  background: #555;
-}
-.manual-btn:not(:last-child)
-{
-  margin-right: 40px;
-}
-
