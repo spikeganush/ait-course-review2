@@ -48,8 +48,6 @@ button,
 input[type='submit'] {
   background: var(--color-2);
   color: var(--color-1);
-  font-family: var(--font-3);
-  cursor: pointer;
   transition: 0.2s;
   margin: 0;
   padding: 10px 20px;
@@ -88,6 +86,7 @@ i:hover {
 
 .star-ranking {
   display: flex;
+  align-items: center;
   gap: 0.1em;
   align-content: center;
 }
@@ -1053,6 +1052,67 @@ button.nav-button {
   justify-content: center;
   align-content: center;
   width: 100%;
+}
+
+.write-review {
+  background-color: white;
+  padding: 15px;
+}
+
+.write-review textarea {
+  background-color: rgb(229, 226, 226);
+  width: 90%;
+  min-height: 150px;
+  border-radius: 5px;
+  padding: 10px;
+  resize: vertical;
+}
+
+.write-review input[type='submit'] {
+  background-color: lightblue;
+  border-radius: 8px;
+  padding: 10px 35px 10px 35px;
+}
+
+.reviews-container {
+  display: flex;
+  justify-content: center;
+  padding: 15px;
+}
+
+.review {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  padding: 15px;
+  border-radius: 15px;
+  background: #eee;
+}
+
+.review.current-user {
+  background: rgb(83, 175, 218);
+}
+
+.top-part {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.top-part img {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-right: 0.5em;
+}
+
+.user-info {
+  display: flex;
+  align-items: center;
+}
+
+.bottom-part {
 }
 
 /* responsive for top bar navigation */

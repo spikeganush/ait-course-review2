@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { getAllCourses } from '../actions/course.action'
 import { isEmpty } from '../components/Utils'
 import { useHistory } from 'react-router-dom'
+import ReactStars from 'react-stars'
 
 const Courses = () => {
   const history = useHistory()
@@ -18,6 +19,28 @@ const Courses = () => {
     history.push(`/course/${props}`)
   }
 
+  console.log(coursesData)
+
+  const average = (id) => {
+    console.log(coursesData.title)
+
+    // const courseMarks = !isEmpty(coursesData._id)
+    //   ? coursesData._id === id
+    //     ? console.log('coucou')
+    //     : 0
+    //   : 1
+
+    // console.log(courseMarks)
+
+    // const totalMark = !isEmpty(coursesData._id)
+    //   ? courseMarks.reduce((prev, cur) => prev + cur, 0)
+    //   : 0
+
+    // const average = totalMark / courseMarks.length
+
+    // return average
+  }
+
   return (
     <div className="row3">
       {!isEmpty(coursesData[0]) &&
@@ -26,6 +49,7 @@ const Courses = () => {
             <div
               className="column3"
               onClick={() => handleOpenCourse(course._id)}
+              key={course._id}
             >
               <img
                 src={__dirname + course.photo}
@@ -35,32 +59,18 @@ const Courses = () => {
               <h3>{course.title}</h3>
               <p>{course.summarize}</p>
               <div className="star-ranking">
-                <img
-                  src="https://i.ibb.co/2kW5mnM/star.png"
-                  alt="star-checked"
-                  className="star-image"
+                <ReactStars
+                  size={40}
+                  value={average(course._id)}
+                  edit={false}
                 />
-                <img
-                  src="https://i.ibb.co/2kW5mnM/star.png"
-                  alt="star-checked"
-                  className="star-image"
-                />
-                <img
-                  src="https://i.ibb.co/2kW5mnM/star.png"
-                  alt="star-checked"
-                  className="star-image"
-                />
-                <img
-                  src="https://i.ibb.co/TwYYb93/star-1.png"
-                  alt="star-unchecked"
-                  className="star-image"
-                />
-                <img
-                  src="https://i.ibb.co/TwYYb93/star-1.png"
-                  alt="star-unchecked"
-                  className="star-image"
-                />
-                <div className="number-ranking">(120)</div>
+                {course.reviews
+                  ? course.reviews.length > 0 && (
+                      <div className="read-review">
+                        ({course.reviews.length})
+                      </div>
+                    )
+                  : '(0)'}
               </div>
             </div>
           )
