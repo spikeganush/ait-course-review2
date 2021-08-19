@@ -128,7 +128,7 @@ const News = () => {
             
           </div>
           <div className="column-news2">
-            <img src={news_img5} alt="news-image" className="course-photo"/>
+            <img src={news_img1} alt="news-image" className="course-photo"/>
             <p>24 JUNE 2021</p>
             <h2>Most Reviews Subject</h2>
             <p>
