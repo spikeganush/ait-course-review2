@@ -716,8 +716,7 @@ a {
   color: white;
 }
 
-.column h1
-{
+.column h1 {
   font-size: 50px;
 }
 
@@ -1117,7 +1116,12 @@ button.nav-button {
   align-items: center;
 }
 
-.bottom-part {
+.read-review {
+  cursor: pointer;
+}
+
+.column2 > span {
+  cursor: pointer;
 }
 
 /* responsive for top bar navigation */
@@ -1160,8 +1164,7 @@ button.nav-button {
     margin: 0;
   }
 
-  .column h1
-  {
+  .column h1 {
     font-size: 30px;
     margin: 20px;
   }
@@ -1207,61 +1210,50 @@ button.nav-button {
     order: 4;
   }
 
-  .banner 
-  {
+  .banner {
     /* display: block; */
     flex-direction: column;
     aspect-ratio: 1/1;
   }
 
-  .text-banner 
-  {
+  .text-banner {
     font-size: 1.5ch;
     text-align: center;
   }
 
-  .logo{
+  .logo {
     max-width: 100px;
   }
 
-  input 
-  {
+  input {
     min-width: 50%;
   }
-  .text-banner 
-  {
-    margin:auto;
+  .text-banner {
+    margin: auto;
   }
 }
 
 /* CSS for course page */
-.course-content
-{
+.course-content {
   width: 100%;
   max-width: 1200px;
   margin: auto;
 }
 
-.row-course 
-{
+.row-course {
   display: flex;
   flex-direction: row;
   justify-content: center;
 }
-.column-course
-{
-  margin: 60px ;
-
+.column-course {
+  margin: 60px;
 }
 
-.course-search-bar
-{
+.course-search-bar {
   justify-content: center;
   text-align: center;
- 
 }
-.course-input-bar
-{
+.course-input-bar {
   min-width: 600px;
   height: 60px;
   border: 2px solid white;
@@ -1275,24 +1267,21 @@ button.nav-button {
   text-align: center;
 }
 
-.search-dropdown
-{
+.search-dropdown {
   position: relative;
   width: 200px;
   margin: 15px auto;
 }
 
-.search-dropdown .dropdown-list
-{
-  background:#fff;
+.search-dropdown .dropdown-list {
+  background: #fff;
   border-radius: 5px;
   position: relative;
   cursor: pointer;
 }
 
-.search-dropdown .dropdown-list::before
-{
-  content: "";
+.search-dropdown .dropdown-list::before {
+  content: '';
   position: absolute;
   top: 18px;
   right: 18px;
@@ -1302,12 +1291,10 @@ button.nav-button {
   border-color: transparent transparent #555 #555;
   transform: rotate(-45deg);
 }
-.search-dropdown .dropdown-list li
-{
+.search-dropdown .dropdown-list li {
   padding: 10px 20px;
 }
-.search-dropdown ul
-{
+.search-dropdown ul {
   position: absolute;
   top: 55px;
   left: 0;
@@ -1315,8 +1302,7 @@ button.nav-button {
   border-radius: 5px;
 }
 
-.search-dropdown .select-dropdown
-{
+.search-dropdown .select-dropdown {
   position: absolute;
   top: 55px;
   left: 0;
@@ -1326,25 +1312,21 @@ button.nav-button {
   display: none;
 }
 
-.search-dropdown .select-dropdown li
-{
+.search-dropdown .select-dropdown li {
   padding: 10px 20px;
   cursor: pointer;
 }
 
-.search-dropdown .select-dropdown li:hover
-{
+.search-dropdown .select-dropdown li:hover {
   background: #000;
   color: #eee;
 }
 
-.search-dropdown.active .dropdown-list::before
-{
+.search-dropdown.active .dropdown-list::before {
   top: 15px;
   transform: rotate(-45deg);
 }
 
-.search-dropdown.active .dropdown-list
-{
+.search-dropdown.active .dropdown-list {
   display: block;
 }

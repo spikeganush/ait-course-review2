@@ -10,6 +10,7 @@ const Courses = () => {
   const history = useHistory()
   const coursesData = useSelector((state) => state.courseReducer)
   const dispatch = useDispatch()
+  let averageMark = 0
 
   useEffect(() => {
     dispatch(getAllCourses())
@@ -19,26 +20,21 @@ const Courses = () => {
     history.push(`/course/${props}`)
   }
 
-  console.log(coursesData)
-
   const average = (id) => {
-    console.log(coursesData.title)
-
-    // const courseMarks = !isEmpty(coursesData._id)
-    //   ? coursesData._id === id
-    //     ? console.log('coucou')
-    //     : 0
-    //   : 1
-
-    // console.log(courseMarks)
-
-    // const totalMark = !isEmpty(coursesData._id)
-    //   ? courseMarks.reduce((prev, cur) => prev + cur, 0)
-    //   : 0
-
-    // const average = totalMark / courseMarks.length
-
-    // return average
+    if (!isEmpty(coursesData[0])) {
+      coursesData.map((course) => {
+        if (course._id === id) {
+          const totalMark = course.reviews.reduce(
+            (prev, cur) => prev + cur.reviewMark,
+            0
+          )
+          averageMark = totalMark / course.reviews.length
+          return averageMark
+        }
+        return averageMark
+      })
+    }
+    return averageMark
   }
 
   return (
@@ -64,6 +60,7 @@ const Courses = () => {
                   value={average(course._id)}
                   edit={false}
                 />
+                {console.log(average(course._id))}
                 {course.reviews
                   ? course.reviews.length > 0 && (
                       <div className="read-review">
