@@ -817,6 +817,14 @@ a {
   margin-bottom: 10px;
 }
 
+.read-review {
+  cursor: pointer;
+}
+
+.column2 > span {
+  cursor: pointer;
+}
+
 .nav1 {
   list-style: none;
 }
