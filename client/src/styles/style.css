@@ -88,7 +88,12 @@ i:hover {
   display: flex;
   align-items: center;
   gap: 0.1em;
-  align-content: center;
+  justify-content: center;
+  padding: 1rem;
+}
+
+.number-ranking {
+  margin-left: 1rem;
 }
 
 .error {
@@ -786,6 +791,7 @@ a {
 
 .footer {
   background-color: #f4f4f4;
+  padding: 10px;
 }
 
 .column3 {
@@ -1128,7 +1134,9 @@ button.nav-button {
 @media screen and (max-width: 800px) {
   .row1 {
     flex-direction: column;
+    margin: 20px;
   }
+
   input.input-bar {
     min-width: auto;
     max-width: 100%;
@@ -1139,12 +1147,20 @@ button.nav-button {
     padding: 0.5rem;
     height: auto;
   }
+
   .input-bar::-webkit-input-placeholder {
     font-size: small;
   }
+
+  .student-image {
+    max-width: 100%;
+    padding: 20px;
+  }
+
   .column1 {
     margin: 10px;
   }
+
   .column1 a {
     margin-left: 0;
     margin: auto;
