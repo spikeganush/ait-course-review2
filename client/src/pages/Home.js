@@ -1,5 +1,4 @@
 import React, { useEffect } from 'react'
-import Footer from '../components/Footer'
 import bg_banner from '../img/pineapple3.jpeg'
 import { useDispatch, useSelector } from 'react-redux'
 import { getCourses } from '../actions/course.action'
@@ -43,7 +42,7 @@ const Home = () => {
         <div className="banner2">
           <div className="row">
             <div className="column">
-              <h1>Welcome To Course Reviews pourt</h1>
+              <h1>Welcome To Course Reviews</h1>
               <p>
                 Welcome AIT students, let's explore our new websites that
                 providing lots of reviews and suggestions from AIT students.
@@ -175,7 +174,6 @@ const Home = () => {
             })}
         </div>
       </main>
-      <Footer />
     </>
   )
 }

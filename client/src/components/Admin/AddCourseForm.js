@@ -88,8 +88,8 @@ const AddCourseForm = () => {
             placeholder="A summarize of the description"
             onChange={(e) => setSummarize(e.target.value)}
             value={summarize}
-            cols="35"
-            rows="3"
+            cols="45"
+            rows="5"
             tabIndex={3}
           ></textarea>
         </div>
