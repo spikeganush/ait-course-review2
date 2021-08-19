@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react'
-//import Footer from '../components/Footer'
 import { useParams } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
 import { getCourse, addReview } from '../actions/course.action'
