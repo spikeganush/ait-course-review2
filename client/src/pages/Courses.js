@@ -4,12 +4,14 @@ import { useDispatch, useSelector } from 'react-redux'
 import { getAllCourses } from '../actions/course.action'
 import { isEmpty } from '../components/Utils'
 import { useHistory } from 'react-router-dom'
+import ReactStars from 'react-stars'
 
 const Courses = () => 
 {
   const history = useHistory()
   const coursesData = useSelector((state) => state.courseReducer)
   const dispatch = useDispatch()
+  let averageMark = 0
 
   useEffect(() => {
     dispatch(getAllCourses())
@@ -17,6 +19,23 @@ const Courses = () =>
 
   const handleOpenCourse = (props) => {
     history.push(`/course/${props}`)
+  }
+
+  const average = (id) => {
+    if (!isEmpty(coursesData[0])) {
+      coursesData.map((course) => {
+        if (course._id === id) {
+          const totalMark = course.reviews.reduce(
+            (prev, cur) => prev + cur.reviewMark,
+            0
+          )
+          averageMark = totalMark / course.reviews.length
+          return averageMark
+        }
+        return averageMark
+      })
+    }
+    return averageMark
   }
 
   return (

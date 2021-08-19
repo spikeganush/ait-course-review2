@@ -21,8 +21,7 @@ router.put('/:id', updateCourse)
 router.delete('/:id', deleteCourse)
 
 // reviews
-router.patch('/review/:id', review)
-router.put('/review/', addReview)
+router.patch('/review/:id', addReview)
 router.patch('/edit-review/:id', editReview)
 router.patch('/delete-review/:id', deleteReview)
 

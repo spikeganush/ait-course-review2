@@ -8,6 +8,10 @@ export const UPLOAD_PHOTO = 'UPLOAD_PHOTO'
 export const UPDATE_COURSE = 'UPDATE_COURSE'
 export const DELETE_COURSE = 'DELETE_COURSE'
 
+//Comment
+export const ADD_REVIEW = 'ADD_REVIEW'
+
+//---------------------
 export const GET_COURSE_ERRORS = 'GET_COURSE_ERRORS'
 
 export const getCourse = (cid) => {
@@ -100,6 +104,24 @@ export const uploadPhoto = (data, id) => {
           })
         }
       })
+      .catch((err) => console.log(err))
+  }
+}
+
+export const addReview = (
+  courseId,
+  reviewerId,
+  reviewerUsername,
+  review,
+  reviewMark
+) => {
+  return (dispatch) => {
+    return axios({
+      method: 'patch',
+      url: `/api/course/review/${courseId}`,
+      data: { reviewerId, reviewerUsername, review, reviewMark },
+    })
+      .then((res) => dispatch({ type: ADD_REVIEW, payload: { courseId } }))
       .catch((err) => console.log(err))
   }
 }

@@ -1,5 +1,4 @@
 import React, { useEffect } from 'react'
-import Footer from '../components/Footer'
 import bg_banner from '../img/pineapple3.jpeg'
 import { useDispatch, useSelector } from 'react-redux'
 import { getCourses } from '../actions/course.action'
@@ -175,7 +174,6 @@ const Home = () => {
             })}
         </div>
       </main>
-      <Footer />
     </>
   )
 }

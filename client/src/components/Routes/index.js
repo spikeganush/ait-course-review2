@@ -20,6 +20,7 @@ import Search from '../../pages/Search'
 // import RegisterScreen from '../auth/RegisterScreen'
 // import ForgotPasswordScreen from '../auth/ForgotPasswordScreen'
 import ResetPasswordScreen from '../auth/ResetPasswordScreen'
+import Footer from '../Footer'
 
 const index = () => {
   return (
@@ -45,6 +46,7 @@ const index = () => {
         />
         <Redirect to="/" />
       </Switch>
+      <Footer />
     </Router>
   )
 }

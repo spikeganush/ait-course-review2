@@ -163,20 +163,19 @@ module.exports.deleteCourse = async (req, res) => {
   })
 }
 
-module.exports.review = (req, res) => {
+module.exports.commentPost = (req, res) => {
   if (!ObjectID.isValid(req.params.id))
     return res.status(400).send('ID unknown : ' + req.params.id)
 
   try {
-    return CourseModel.findByIdAndUpdate(
+    return PostModel.findByIdAndUpdate(
       req.params.id,
       {
         $push: {
-          reviews: {
-            reviewerId: req.body.reviewerId,
-            reviewerUsername: req.body.reviewerUsername,
-            review: req.body.review,
-            reviewMark: req.body.reviewMark,
+          comments: {
+            commenterId: req.body.commenterId,
+            commenterPseudo: req.body.commenterPseudo,
+            text: req.body.text,
             timestamp: new Date().getTime(),
           },
         },
@@ -192,65 +191,32 @@ module.exports.review = (req, res) => {
   }
 }
 
-module.exports.addReview = async (req, res) => {
+module.exports.addReview = (req, res) => {
   if (!ObjectID.isValid(req.params.id))
-    return res.status(400).send('ID unknown: ' + req.params.id)
-  if (req.file !== null) {
-    try {
-      await CourseModel.findOneAndUpdate(
-        req.params.id,
+    return res.status(400).send('ID unknown : ' + req.params.id)
 
-        {
-          $set: {
-            title: req.body.title,
-            code: req.body.code,
-            summarize: req.body.summarize,
-            description: req.body.description,
-            photo: req.body.file,
+  try {
+    return CourseModel.findByIdAndUpdate(
+      req.params.id,
+      {
+        $push: {
+          reviews: {
+            reviewerId: req.body.reviewerId,
+            reviewerUsername: req.body.reviewerUsername,
+            reviewText: req.body.review,
+            reviewMark: req.body.reviewMark,
+            timestamp: new Date().getTime(),
           },
         },
-        { new: true, upsert: true, setDefaultsOnInsert: true },
-        (err, docs) => {
-          if (!err) return res.send(docs)
-          if (err) {
-            res.status(500).json({
-              success: false,
-              error: err.message,
-            })
-          }
-        }
-      )
-    } catch (err) {
-      return res.status(500).json({ message: err })
-    }
-  } else {
-    try {
-      await CourseModel.findOneAndUpdate(
-        req.params.id,
-
-        {
-          $set: {
-            title: req.body.title,
-            code: req.body.code,
-            summarize: req.body.summarize,
-            description: req.body.description,
-            photo: req.body.existingFile,
-          },
-        },
-        { new: true, upsert: true, setDefaultsOnInsert: true },
-        (err, docs) => {
-          if (!err) return res.send(docs)
-          if (err) {
-            res.status(500).json({
-              success: false,
-              error: err.message,
-            })
-          }
-        }
-      )
-    } catch (err) {
-      return res.status(500).json({ message: err })
-    }
+      },
+      { new: true },
+      (err, docs) => {
+        if (!err) return res.send(docs)
+        else return res.status(400).send(err)
+      }
+    )
+  } catch (err) {
+    return res.status(400).send(err)
   }
 }
 
