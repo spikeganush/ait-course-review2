@@ -45,8 +45,8 @@ const Header = () => {
             </NavLink>
           </li>
           <li>
-            <NavLink exact to="/course" onClick={onLinkClick}>
-              Course
+            <NavLink exact to="/courses" onClick={onLinkClick}>
+              Courses
             </NavLink>
           </li>
           <li>
