@@ -4,6 +4,10 @@ import bg_banner from '../img/news_img5.jpeg'
 import news_img1 from '../img/news_img4.jpeg'
 import news_img2 from '../img/news_img2.jpeg'
 import news_img3 from '../img/new_img1.jpeg'
+import news_img4 from '../img/news_img6.jpeg'
+import news_img5 from '../img/news_img7.jpeg'
+import news_img6 from '../img/news_img8.jpeg'
+import news_img7 from '../img/news_img9.jpeg'
 
 const News = () => {
   return (
@@ -78,16 +82,63 @@ const News = () => {
         <div className="row1">
           <h1>Hot Topics</h1>
         </div>
-        <div className="row1">
-          <div className="column1">
-            <h1>Most Reviews Subject</h1>
+        <div className="row2">
+          <div className="column-news2">
+            
+            <img src={news_img4} alt="news-image" className="course-photo"/>
+            <p>13 AUGUST 2021</p>
+            <h2>Campus reopen 2021</h2>
+            <p>
+              “Despite the disruption of the COVID-19 pandemic, we continue to advance our 2025 Strategy 
+              and make significant strides towards our goal of being among the world’s top 50 universities by 2025,”
+            </p>
+            
           </div>
-          <div className="column1">
-            <a href="view_all">View all</a>
+          <div className="column-news2">
+            <img src={news_img5} alt="news-image" className="course-photo"/>
+            <p>24 JUNE 2021</p>
+            <h2>Helping students adapt to online learning sets them up for success</h2>
+            <p>
+              According to the study, adaptability – also known as the capacity to effectively adjust behaviour, 
+              thoughts and feelings in response to disruptions – can assist students in their online learning during COVID-19.
+            </p>
+            
+          </div>
+        </div>
+        <div className="row2">
+          <div className="column-news2">
+            
+            <img src={news_img6} alt="news-image" className="course-photo"/>
+            <p>13 AUGUST 2021</p>
+            <h2>Top programming languages</h2>
+            <p>
+              “Despite the disruption of the COVID-19 pandemic, we continue to advance our 2025 Strategy 
+              and make significant strides towards our goal of being among the world’s top 50 universities by 2025,”
+            </p>
+            
+          </div>
+          <div className="column-news2">
+            <img src={news_img7} alt="news-image" className="course-photo"/>
+            <p>24 JUNE 2021</p>
+            <h2>Covid 19 Vaccination</h2>
+            <p>
+              According to the study, adaptability – also known as the capacity to effectively adjust behaviour, 
+              thoughts and feelings in response to disruptions – can assist students in their online learning during COVID-19.
+            </p>
+            
+          </div>
+          <div className="column-news2">
+            <img src={news_img5} alt="news-image" className="course-photo"/>
+            <p>24 JUNE 2021</p>
+            <h2>Most Reviews Subject</h2>
+            <p>
+              According to the study, adaptability – also known as the capacity to effectively adjust behaviour, 
+              thoughts and feelings in response to disruptions – can assist students in their online learning during COVID-19.
+            </p>
+            
           </div>
         </div>
       </main>
-      <Footer />
     </>
   )
 }
