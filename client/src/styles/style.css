@@ -48,8 +48,6 @@ button,
 input[type='submit'] {
   background: var(--color-2);
   color: var(--color-1);
-  font-family: var(--font-3);
-  cursor: pointer;
   transition: 0.2s;
   margin: 0;
   padding: 10px 20px;
@@ -84,6 +82,18 @@ i:hover {
 
 .star-ranking img {
   width: 25px;
+}
+
+.star-ranking {
+  display: flex;
+  align-items: center;
+  gap: 0.1em;
+  justify-content: center;
+  padding: 1rem;
+}
+
+.number-ranking {
+  margin-left: 1rem;
 }
 
 .error {
@@ -712,6 +722,10 @@ a {
   color: white;
 }
 
+.column h1 {
+  font-size: 50px;
+}
+
 .banner2 {
   /* hello Jun*/
   background: #000;
@@ -730,22 +744,42 @@ a {
 .row1 {
   display: flex;
   flex-direction: row;
+  /* align-items: center; */
 }
 
 .column1 {
-  margin: 20px;
-  margin-right: 150px;
+  margin: 30px;
   flex: 1;
   font-family: sans-serif;
 }
 
 .column1 a {
-  margin-left: 370px;
+  margin-left: 470px;
 }
 
 .row2 {
   display: flex;
   flex-direction: row;
+
+}
+
+.row3 {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.row3 > * {
+  flex: 1 1 360px;
+}
+
+.column3 {
+  font-family: sans-serif;
+  text-align: center;
+  max-width: 40%;
+  margin: 50px 20px 15px;
+  background-color: #f4f4f4;
+  margin: 10px;
+  padding: 1rem;
 }
 
 .column2 {
@@ -760,14 +794,12 @@ a {
 
 .footer {
   background-color: #f4f4f4;
+  padding: 10px;
 }
 
-.column3 {
-  margin: 50px 20px 15px;
-  padding-left: 50px;
-  max-width: 40%;
-  font-family: sans-serif;
-  text-align: center;
+.row-footer {
+  display: flex;
+  justify-content: space-between;
 }
 
 .column4 {
@@ -789,15 +821,6 @@ a {
 
 .course-photo {
   width: 100%;
-}
-
-.star img {
-  width: 100%;
-}
-
-.star-image {
-  max-width: 20px;
-  margin-bottom: 10px;
 }
 
 .nav1 {
@@ -916,6 +939,7 @@ body {
   line-height: 1.7;
   background: #eee;
   color: #333;
+  line-height: 2em !important;
 }
 
 .form-group,
@@ -1025,11 +1049,93 @@ button.nav-button {
   background-color: black;
 }
 
+.center-course {
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  width: 100%;
+}
+
+.write-review {
+  background-color: white;
+  padding: 15px;
+}
+
+.write-review textarea {
+  background-color: rgb(229, 226, 226);
+  width: 90%;
+  min-height: 150px;
+  border-radius: 5px;
+  padding: 10px;
+  resize: vertical;
+}
+
+.write-review input[type='submit'] {
+  background-color: lightblue;
+  border-radius: 8px;
+  padding: 10px 35px 10px 35px;
+}
+
+.write-review input[type='submit']:disabled {
+  background-color: darkgrey;
+  border-radius: 8px;
+  padding: 10px 35px 10px 35px;
+  cursor: none;
+}
+
+.reviews-container {
+  display: flex;
+  justify-content: center;
+  padding: 15px;
+}
+
+.review {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  padding: 15px;
+  border-radius: 15px;
+  background: #eee;
+}
+
+.review.current-user {
+  background: rgb(83, 175, 218);
+}
+
+.top-part {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.top-part img {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-right: 0.5em;
+}
+
+.user-info {
+  display: flex;
+  align-items: center;
+}
+
+.read-review {
+  cursor: pointer;
+}
+
+.column2 > span {
+  cursor: pointer;
+}
+
 /* responsive for top bar navigation */
-@media screen and (max-width: 700px) {
+@media screen and (max-width: 800px) {
   .row1 {
     flex-direction: column;
+    margin: 20px;
   }
+
   input.input-bar {
     min-width: auto;
     max-width: 100%;
@@ -1040,12 +1146,20 @@ button.nav-button {
     padding: 0.5rem;
     height: auto;
   }
+
   .input-bar::-webkit-input-placeholder {
     font-size: small;
   }
+
+  .student-image {
+    max-width: 100%;
+    padding: 20px;
+  }
+
   .column1 {
     margin: 10px;
   }
+
   .column1 a {
     margin-left: 0;
     margin: auto;
@@ -1063,6 +1177,11 @@ button.nav-button {
   }
   .column {
     margin: 0;
+  }
+
+  .column h1 {
+    font-size: 30px;
+    margin: 20px;
   }
   .column3 {
     margin: 0;
@@ -1117,10 +1236,287 @@ button.nav-button {
     text-align: center;
   }
 
+  .logo {
+    max-width: 100px;
+  }
+
   input {
     min-width: 50%;
   }
   .text-banner {
     margin: auto;
   }
+}
+
+/* CSS for course page */
+.course-content {
+  width: 100%;
+  max-width: 1200px;
+  margin: auto;
+}
+
+.row-course {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+.column-course {
+  margin: 60px;
+}
+
+.course-search-bar {
+  justify-content: center;
+  text-align: center;
+}
+.course-input-bar {
+  min-width: 600px;
+  height: 60px;
+  border: 2px solid white;
+  border-radius: 20px;
+  padding: 0 30px;
+  text-align: center;
+}
+
+.course-input-bar::placeholder {
+  font-size: 1rem;
+  text-align: center;
+}
+
+.search-dropdown {
+  position: relative;
+  width: 200px;
+  margin: 15px auto;
+}
+
+.search-dropdown .dropdown-list {
+  background: #fff;
+  border-radius: 5px;
+  position: relative;
+  cursor: pointer;
+}
+
+.search-dropdown .dropdown-list::before {
+  content: '';
+  position: absolute;
+  top: 18px;
+  right: 18px;
+  width: 6px;
+  height: 6px;
+  border: 2px solid;
+  border-color: transparent transparent #555 #555;
+  transform: rotate(-45deg);
+}
+.search-dropdown .dropdown-list li {
+  padding: 10px 20px;
+}
+.search-dropdown ul {
+  position: absolute;
+  top: 55px;
+  left: 0;
+  width: 100%;
+  border-radius: 5px;
+}
+
+.search-dropdown .select-dropdown {
+  position: absolute;
+  top: 55px;
+  left: 0;
+  width: 100%;
+  background: #fff;
+  border-radius: 5px;
+  display: none;
+}
+
+.search-dropdown .select-dropdown li {
+  padding: 10px 20px;
+  cursor: pointer;
+}
+
+.search-dropdown .select-dropdown li:hover {
+  background: #000;
+  color: #eee;
+}
+
+.search-dropdown.active .dropdown-list::before {
+  top: 15px;
+  transform: rotate(-45deg);
+}
+
+.search-dropdown.active .dropdown-list {
+  display: block;
+}
+
+
+/* CSS for news page */
+.column-news1
+{
+  /* margin: 100px 150px 100px; */
+  flex: 1;
+  font-family: sans-serif;
+  padding: 3rem;
+}
+
+.column-news1 h1
+{
+  padding-bottom: 1rem;
+}
+
+.column-news2 {
+  flex: 1;
+  font-family: sans-serif;
+  max-width: 50%;
+  background-color: #f4f4f4;
+  margin: 10px;
+  margin-bottom: 30px;
+  padding: 1rem;
+}
+
+.column-news2 p
+{
+  padding: 10px 0px 20px;
+}
+.slide-frame
+{
+  height: 420px;
+  width: 630px;
+  overflow: hidden;
+}
+
+.slide-image
+{
+  width: 500%;
+  height: 300px;
+  display: flex;
+}
+
+.slide-image input
+{
+  display: none;
+}
+.img-container
+{
+  width: 20%;
+  transition: 2s;
+}
+
+.img-container img
+{
+  width: 800px;
+  height: 500px;
+}
+
+#radio1:checked ~ .first
+{
+  margin-left: 0;
+}
+#radio2:checked ~ .first
+{
+  margin-left: -20%;
+}
+#radio3:checked ~ .first
+{
+  margin-left: -40%;
+}
+#radio4:checked ~ .first
+{
+  margin-left: -60%;
+}
+
+.nav-manual
+{
+  position: absolute;
+  width: 800px;
+  display: flex;
+  margin-top: 380px;
+  margin-right: 100px;
+  justify-content: center;
+}
+.manual-btn
+{
+  border: 2px solid #555;
+  padding: 5px;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: 1s;
+}
+.manual-btn:hover
+{
+  background: #555;
+}
+.manual-btn:not(:last-child)
+{
+  margin-right: 40px;
+}
+
+/* CSS for About us page */
+.row-about
+{
+  display: flex;
+  flex-direction: row;
+}
+
+.row-about h1{
+  margin: 20px;
+}
+.column-about
+{
+    flex: 1;
+    font-family: sans-serif;
+    margin: 10px;
+    padding: 1rem;
+}
+.row-about1 
+{
+  display: flex;
+  flex-direction: row;
+  text-align: center;
+  align-items: center;
+  background-color: #f6f6f6;
+  margin: 20px;
+}
+.profile-img
+{
+  width: 40%;
+}
+
+/* responsive css continued */
+@media screen and (max-width: 790px) 
+{
+  .column-course
+  {
+    margin: 0;
+  }
+  .search-dropdown
+  {
+    display: none;
+  }
+
+  input.course-input-bar {
+    min-width: auto;
+    max-width: 100%;
+    margin: 1em;
+    position: static;
+    background-color: white;
+    font-size: 1rem;
+    padding: 0.5rem;
+    height: auto;
+  }
+  .column1
+  {
+    margin: 10px;
+    margin-right: auto;
+  }
+
+  .column-news2
+  {
+    max-width: auto;
+    min-width: 100%;
+    margin: 0;
+  }
+
+  .row-about1
+  {
+    flex-direction: column;
+  }
+
 }

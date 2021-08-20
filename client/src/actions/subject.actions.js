@@ -2,12 +2,18 @@ import axios from 'axios'
 
 export const GET_SUBJECT = 'GET_SUBJECT'
 export const GET_SUBJECTS = 'GET_SUBJECTS'
+export const GET_ALL_SUBJECTS = 'GET_ALL_SUBJECTS'
 export const UPLOAD_PHOTO = 'UPLOAD_PHOTO'
 export const UPDATE_SUBJECT = 'UPDATE_SUBJECT'
 export const ADD_SUBJECT = 'ADD_SUBJECT'
 export const DELETE_SUBJECT = 'DELETE_SUBJECT'
 
 export const GET_SUBJECT_ERRORS = 'GET_SUBJECT_ERRORS'
+
+//Comment
+export const ADD_REVIEW = 'ADD_REVIEW'
+
+//---------------------
 
 export const getSubject = (sid) => {
   return (dispatch) => {
@@ -20,12 +26,24 @@ export const getSubject = (sid) => {
   }
 }
 
-export const getSubjects = () => {
+export const getSubjects = (num) => {
   return (dispatch) => {
     return axios
       .get(`/api/subject`)
       .then((res) => {
-        dispatch({ type: GET_SUBJECTS, payload: res.data })
+        const array = res.data.slice(0, num)
+        dispatch({ type: GET_SUBJECTS, payload: array })
+      })
+      .catch((err) => console.log(err))
+  }
+}
+
+export const getAllSubjects = () => {
+  return (dispatch) => {
+    return axios
+      .get(`/api/subject`)
+      .then((res) => {
+        dispatch({ type: GET_ALL_SUBJECTS, payload: res.data })
       })
       .catch((err) => console.log(err))
   }
@@ -99,6 +117,24 @@ export const deleteSubject = (subjectId) => {
       .then((res) => {
         dispatch({ type: DELETE_SUBJECT, payload: { subjectId } })
       })
+      .catch((err) => console.log(err))
+  }
+}
+
+export const addReview = (
+  subjectId,
+  reviewerId,
+  reviewerUsername,
+  review,
+  reviewMark
+) => {
+  return (dispatch) => {
+    return axios({
+      method: 'patch',
+      url: `/api/subject/review/${subjectId}`,
+      data: { reviewerId, reviewerUsername, review, reviewMark },
+    })
+      .then((res) => dispatch({ type: ADD_REVIEW, payload: { subjectId } }))
       .catch((err) => console.log(err))
   }
 }

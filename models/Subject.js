@@ -30,6 +30,17 @@ const SubjectSchema = new mongoose.Schema(
       type: String,
       default: './uploads/profil/random-user.png',
     },
+    reviews: {
+      type: [
+        {
+          reviewerId: String,
+          reviewerUsername: String,
+          reviewText: String,
+          reviewMark: Number,
+          timestamp: Number,
+        },
+      ],
+    },
   },
   {
     timestamps: true,

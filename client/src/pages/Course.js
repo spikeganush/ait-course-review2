@@ -1,267 +1,115 @@
-import React from 'react'
-import Footer from '../components/Footer'
+import React, { useEffect, useState } from 'react'
+import { useParams } from 'react-router-dom'
+import { useDispatch, useSelector } from 'react-redux'
+import { getCourse, addReview } from '../actions/course.action'
+import ReactStars from 'react-stars'
+import CardReviews from '../components/CardReviews'
+import { isEmpty } from '../components/Utils'
 
-const Course = () => 
-{
+const Course = () => {
+  const courseData = useSelector((state) => state.courseReducer)
+  const userData = useSelector((state) => state.userReducer)
+  const dispatch = useDispatch()
+  const { id } = useParams()
+  const [leaveReview, setLeaveReview] = useState(false)
+  const [readReview, setReadReview] = useState(false)
+  const [activateButton, setActivateButton] = useState(true)
+
+  const courseMarks = !isEmpty(courseData._id)
+    ? courseData.reviews.map((review) => review.reviewMark)
+    : 0
+
+  const totalMark = !isEmpty(courseData._id)
+    ? courseMarks.reduce((prev, cur) => prev + cur, 0)
+    : 0
+
+  const [review, setReview] = useState('')
+  const [stars, setStars] = useState(3)
+
+  useEffect(() => {
+    dispatch(getCourse(id))
+    setActivateButton(true)
+  }, [dispatch, id])
+
+  const handleReview = (e) => {
+    e.preventDefault()
+
+    if (review) {
+      dispatch(
+        addReview(id, userData._id, userData.username, review, stars)
+      ).then(() => {
+        dispatch(getCourse(id))
+        setReview('')
+        setStars(3)
+      })
+    }
+  }
+
   return (
-    <>
-    
-        <main className="content">
-          <div className="row1">
-            <div className="column1">
-              <h1>Course Suggestions</h1>
-            </div>
-
-            <div className="column1">
-              <a href="view_all">View All</a>
-            </div>
-          </div>
-
-        <div className="row2">
-          <div className="column2">
-            <img
-              src="../img/course_image1.jpeg"
-              alt="course"
-              className="course-photo"
-            />
-            <h3>Bachelor of IT</h3>
-            <p>Bachelor of Information Technology</p>
-            <div className="star-ranking">
-              <img
-                src="https://i.ibb.co/2kW5mnM/star.png"
-                alt="star-checked"
-                className="star-image"
-              />
-              <img
-                src="https://i.ibb.co/2kW5mnM/star.png"
-                alt="star-checked"
-                className="star-image"
-              />
-              <img
-                src="https://i.ibb.co/2kW5mnM/star.png"
-                alt="star-checked"
-                className="star-image"
-              />
-              <img
-                src="https://i.ibb.co/TwYYb93/star-1.png"
-                alt="star-unchecked"
-                className="star-image"
-              />
-              <img
-                src="https://i.ibb.co/TwYYb93/star-1.png"
-                alt="star-unchecked"
-                className="star-image"
-              />
-              <div className="number-ranking">(120)</div>
-            </div>
-          </div>
-
-          <div className="column2">
-            <img
-              src="../img/course_image1.jpeg"
-              alt="course"
-              className="course-photo"
-            />
-            <h3>Bachelor of Art & Design</h3>
-            <p>Bachelor of Information Technology</p>
-            <div className="star-ranking">
-              <img
-                src="https://i.ibb.co/2kW5mnM/star.png"
-                alt="star-checked"
-                className="star-image"
-              />
-              <img
-                src="https://i.ibb.co/2kW5mnM/star.png"
-                alt="star-checked"
-                className="star-image"
-              />
-              <img
-                src="https://i.ibb.co/2kW5mnM/star.png"
-                alt="star-checked"
-                className="star-image"
-              />
-              <img
-                src="https://i.ibb.co/TwYYb93/star-1.png"
-                alt="star-unchecked"
-                className="star-image"
-              />
-              <img
-                src="https://i.ibb.co/TwYYb93/star-1.png"
-                alt="star-unchecked"
-                className="star-image"
-              />
-              <div className="number-ranking">(20)</div>
-            </div>
-          </div>
-
-          <div className="column2">
-            <img
-              src="../img/course_image2.jpeg"
-              alt="course"
-              className="course-photo"
-            />
-            <h3>Bachelor of Computer Science</h3>
-            <p>Java,Data base, Swift,...</p>
-            <div className="star-ranking">
-              <img
-                src="https://i.ibb.co/2kW5mnM/star.png"
-                alt="star-checked"
-                className="star-image"
-              />
-              <img
-                src="https://i.ibb.co/2kW5mnM/star.png"
-                alt="star-checked"
-                className="star-image"
-              />
-              <img
-                src="https://i.ibb.co/2kW5mnM/star.png"
-                alt="star-checked"
-                className="star-image"
-              />
-              <img
-                src="https://i.ibb.co/2kW5mnM/star.png"
-                alt="star-checked"
-                className="star-image"
-              />
-              <img
-                src="https://i.ibb.co/TwYYb93/star-1.png"
-                alt="star-unchecked"
-                className="star-image"
-              />
-              <div className="number-ranking">(1120)</div>
-            </div>
+    <div className="center-course">
+      <div className="column2">
+        <img
+          src={__dirname + courseData.photo}
+          alt="course"
+          className="course-photo"
+        />
+        <h3>{courseData.title}</h3>
+        <p>{courseData.description}</p>
+        <div className="star-ranking">
+          <ReactStars
+            size={40}
+            value={totalMark / courseMarks.length}
+            edit={false}
+          />
+          <div className="number-ranking">
+            {courseData.reviews
+              ? courseData.reviews.length > 0 && (
+                  <div
+                    className="read-review"
+                    onClick={() => setReadReview(!readReview)}
+                  >
+                    ({courseData.reviews.length}) Read
+                  </div>
+                )
+              : '(0)'}
           </div>
         </div>
+        <span onClick={() => setLeaveReview(!leaveReview)}>Leave a review</span>
+        {leaveReview ? (
+          userData._id ? (
+            <form action="" onSubmit={handleReview} className="write-review">
+              <label htmlFor="reviewText">Your review</label>
+              <textarea
+                required
+                id="reviewText"
+                placeholder="Write your review"
+                onChange={(e) => setReview(e.target.value)}
+              ></textarea>
+              <p>Your note</p>
+              <ReactStars
+                size={40}
+                value={3}
+                edit={true}
+                onChange={(newValue) => setStars(newValue)}
+              />
+              {activateButton ? (
+                <input type="submit" value="Send" />
+              ) : (
+                <input
+                  type="submit"
+                  value="You can review only one time"
+                  disabled="disabled"
+                />
+              )}
+            </form>
+          ) : (
+            <p>You have to be login to leave a review.</p>
+          )
+        ) : null}
 
-        <div className="row1">
-          <div className="column1">
-            <h1>Most Reviews Subject</h1>
-          </div>
-          <div className="column1">
-            <a href="view_all">View all</a>
-          </div>
-        </div>
-
-        <div className="row2">
-          <div className="column2">
-            <img
-              src="../img/course_image1.jpeg"
-              alt="course"
-              className="course-photo"
-            />
-            <h3>Advanced Web</h3>
-            <p>JavaScript, PHP, Front end,...</p>
-            <div className="star-ranking">
-              <img
-                src="https://i.ibb.co/2kW5mnM/star.png"
-                alt="star-checked"
-                className="star-image"
-              />
-              <img
-                src="https://i.ibb.co/2kW5mnM/star.png"
-                alt="star-checked"
-                className="star-image"
-              />
-              <img
-                src="https://i.ibb.co/2kW5mnM/star.png"
-                alt="star-checked"
-                className="star-image"
-              />
-              <img
-                src="https://i.ibb.co/2kW5mnM/star.png"
-                alt="star-checked"
-                className="star-image"
-              />
-              <img
-                src="https://i.ibb.co/2kW5mnM/star.png"
-                alt="star-checked"
-                className="star-image"
-              />
-
-              <div className="number-ranking">(120)</div>
-            </div>
-          </div>
-
-          <div className="column2">
-            <img
-              src="../img/course_image2.jpeg"
-              alt="course"
-              className="course-photo"
-            />
-            <h3>System Analysis And Design</h3>
-            <p>The theory of system,...</p>
-            <div className="star-ranking">
-              <img
-                src="https://i.ibb.co/2kW5mnM/star.png"
-                alt="star-checked"
-                className="star-image"
-              />
-              <img
-                src="https://i.ibb.co/2kW5mnM/star.png"
-                alt="star-checked"
-                className="star-image"
-              />
-              <img
-                src="https://i.ibb.co/TwYYb93/star-1.png"
-                alt="star-unchecked"
-                className="star-image"
-              />
-              <img
-                src="https://i.ibb.co/TwYYb93/star-1.png"
-                alt="star-unchecked"
-                className="star-image"
-              />
-              <img
-                src="https://i.ibb.co/TwYYb93/star-1.png"
-                alt="star-unchecked"
-                className="star-image"
-              />
-              <div className="number-ranking">(420)</div>
-            </div>
-          </div>
-
-          <div className="column2">
-            <img
-              src="../img/course_image1.jpeg"
-              alt="course"
-              className="course-photo"
-            />
-            <h3>Java</h3>
-            <p>Java course.</p>
-            <div className="star-ranking">
-              <img
-                src="https://i.ibb.co/2kW5mnM/star.png"
-                alt="star-checked"
-                className="star-image"
-              />
-              <img
-                src="https://i.ibb.co/2kW5mnM/star.png"
-                alt="star-checked"
-                className="star-image"
-              />
-              <img
-                src="https://i.ibb.co/2kW5mnM/star.png"
-                alt="star-checked"
-                className="star-image"
-              />
-              <img
-                src="https://i.ibb.co/2kW5mnM/star.png"
-                alt="star-checked"
-                className="star-image"
-              />
-              <img
-                src="https://i.ibb.co/TwYYb93/star-1.png"
-                alt="star-unchecked"
-                className="star-image"
-              />
-
-              <div className="number-ranking">(120)</div>
-            </div>
-          </div>
-        </div>
-      </main>
-      <Footer />
-    </>
+        {readReview && <CardReviews review={courseData} />}
+      </div>
+    </div>
   )
 }
 

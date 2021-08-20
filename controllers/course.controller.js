@@ -163,7 +163,7 @@ module.exports.deleteCourse = async (req, res) => {
   })
 }
 
-module.exports.review = (req, res) => {
+module.exports.addReview = (req, res) => {
   if (!ObjectID.isValid(req.params.id))
     return res.status(400).send('ID unknown : ' + req.params.id)
 
@@ -175,7 +175,7 @@ module.exports.review = (req, res) => {
           reviews: {
             reviewerId: req.body.reviewerId,
             reviewerUsername: req.body.reviewerUsername,
-            review: req.body.review,
+            reviewText: req.body.review,
             reviewMark: req.body.reviewMark,
             timestamp: new Date().getTime(),
           },
