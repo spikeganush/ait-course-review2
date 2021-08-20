@@ -24,7 +24,7 @@ const AboutUs = () => {
             </p>
           </div>
           <div className="column-about">
-            <img src={about_img1} alt="news-image" className="course-photo" />
+            <img src={about_img1} alt="news" className="course-photo" />
           </div>
         </div>
         <div className="column-about">
@@ -45,7 +45,7 @@ const AboutUs = () => {
         </div>
         <div className="row-about1">
           <div className="column-about">
-            <img src={about_img2} alt="news-image" className="profile-img" />
+            <img src={about_img2} alt="news" className="profile-img" />
             <p>Florian jourdian</p>
             <p>Bachelor Student 2021</p>
           </div>
@@ -62,7 +62,7 @@ const AboutUs = () => {
         </div>
         <div className="row-about1">
           <div className="column-about">
-            <img src={about_img2} alt="news-image" className="profile-img" />
+            <img src={about_img2} alt="news" className="profile-img" />
             <p>Visanoukan Chalernphon</p>
             <p>Bachelor Student 2021</p>
           </div>
@@ -79,7 +79,7 @@ const AboutUs = () => {
         </div>
         <div className="row-about1">
           <div className="column-about">
-            <img src={about_img2} alt="news-image" className="profile-img" />
+            <img src={about_img2} alt="news" className="profile-img" />
             <p>Juan Javier Baque Garcia Margallo</p>
             <p>Bachelor Student 2021</p>
           </div>
