@@ -1491,3 +1491,41 @@ button.nav-button {
     flex-direction: column;
   }
 }
+
+/* Dropdown menu */
+.dropdown {
+  position: relative;
+}
+
+.dropdown > a::after {
+  content: "\25bc";
+  font-size: 0.7em;
+  padding-left: 10px;
+  color: rgb(0, 0, 0);
+}
+
+.dropdown .submenu {
+  position: absolute;
+  background-color: white;
+  display: none;
+  box-shadow: 0.5px 1px 4px black;
+}
+
+.dropdown .submenu Navlink {
+  white-space: nowrap;
+}
+
+.dropdown .submenu Navlink:hover {
+  background-color: #014137;
+  color: white;
+}
+
+.dropdown.open .submenu {
+  display: block;
+  margin-top: 20px;
+}
+.submenu li {
+  padding: 20px;
+  font-size: 1em;
+  margin-right: 50px;
+}

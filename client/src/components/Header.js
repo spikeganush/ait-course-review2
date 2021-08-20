@@ -23,6 +23,23 @@ const Header = () => {
     setOpen(false)
   }
 
+  window.addEventListener('load', function (evt) {
+    const dropdown = document.querySelectorAll('.dropdown');
+    const elements = Array.from( dropdown );
+    elements.forEach( function( elm ) {
+        elm.addEventListener('click',( evt ) => {
+           console.log( evt.target );
+            const target = evt.target;
+            if( target.parentNode.classList.contains( 'open')){
+                target.parentNode.classList.remove('open');
+            }
+            else {
+                target.parentNode.classList.add('open');
+            }
+        })
+    });
+});
+
   return (
     <header className="header">
       <NavLink exact to="/">
@@ -45,15 +62,26 @@ const Header = () => {
             </NavLink>
           </li>
           <li>
-            <NavLink exact to="/courses" onClick={onLinkClick}>
-              Courses
-            </NavLink>
+            <div className="dropdown">
+              <NavLink exact to="#" onClick={onLinkClick}>
+                Courses
+                <ul className="submenu">
+                  <li>
+                    <NavLink exact to="/courses" onClick={onLinkClick}>Courses</NavLink>
+                  </li>
+                  <li>
+                    <NavLink exact to="/subjects" onClick={onLinkClick}>Subjects</NavLink>
+                  </li>
+                </ul>
+              </NavLink>
+            </div>
+          
           </li>
-          <li>
+          {/* <li>
             <NavLink exact to="/subjects" onClick={onLinkClick}>
               Subjects
             </NavLink>
-          </li>
+          </li> */}
           <li>
             <NavLink exact to="/news" onClick={onLinkClick}>
               News
