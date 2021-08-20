@@ -759,7 +759,6 @@ a {
 .row2 {
   display: flex;
   flex-direction: row;
-
 }
 
 .row3 {
@@ -1345,18 +1344,15 @@ button.nav-button {
   display: block;
 }
 
-
 /* CSS for news page */
-.column-news1
-{
+.column-news1 {
   /* margin: 100px 150px 100px; */
   flex: 1;
   font-family: sans-serif;
   padding: 3rem;
 }
 
-.column-news1 h1
-{
+.column-news1 h1 {
   padding-bottom: 1rem;
 }
 
@@ -1370,59 +1366,48 @@ button.nav-button {
   padding: 1rem;
 }
 
-.column-news2 p
-{
+.column-news2 p {
   padding: 10px 0px 20px;
 }
-.slide-frame
-{
+.slide-frame {
   height: 420px;
   width: 630px;
   overflow: hidden;
 }
 
-.slide-image
-{
+.slide-image {
   width: 500%;
   height: 300px;
   display: flex;
 }
 
-.slide-image input
-{
+.slide-image input {
   display: none;
 }
-.img-container
-{
+.img-container {
   width: 20%;
   transition: 2s;
 }
 
-.img-container img
-{
+.img-container img {
   width: 800px;
   height: 500px;
 }
 
-#radio1:checked ~ .first
-{
+#radio1:checked ~ .first {
   margin-left: 0;
 }
-#radio2:checked ~ .first
-{
+#radio2:checked ~ .first {
   margin-left: -20%;
 }
-#radio3:checked ~ .first
-{
+#radio3:checked ~ .first {
   margin-left: -40%;
 }
-#radio4:checked ~ .first
-{
+#radio4:checked ~ .first {
   margin-left: -60%;
 }
 
-.nav-manual
-{
+.nav-manual {
   position: absolute;
   width: 800px;
   display: flex;
@@ -1430,42 +1415,36 @@ button.nav-button {
   margin-right: 100px;
   justify-content: center;
 }
-.manual-btn
-{
+.manual-btn {
   border: 2px solid #555;
   padding: 5px;
   border-radius: 10px;
   cursor: pointer;
   transition: 1s;
 }
-.manual-btn:hover
-{
+.manual-btn:hover {
   background: #555;
 }
-.manual-btn:not(:last-child)
-{
+.manual-btn:not(:last-child) {
   margin-right: 40px;
 }
 
 /* CSS for About us page */
-.row-about
-{
+.row-about {
   display: flex;
   flex-direction: row;
 }
 
-.row-about h1{
+.row-about h1 {
   margin: 20px;
 }
-.column-about
-{
-    flex: 1;
-    font-family: sans-serif;
-    margin: 10px;
-    padding: 1rem;
+.column-about {
+  flex: 1;
+  font-family: sans-serif;
+  margin: 10px;
+  padding: 1rem;
 }
-.row-about1 
-{
+.row-about1 {
   display: flex;
   flex-direction: row;
   text-align: center;
@@ -1473,20 +1452,16 @@ button.nav-button {
   background-color: #f6f6f6;
   margin: 20px;
 }
-.profile-img
-{
+.profile-img {
   width: 40%;
 }
 
 /* responsive css continued */
-@media screen and (max-width: 790px) 
-{
-  .column-course
-  {
+@media screen and (max-width: 790px) {
+  .column-course {
     margin: 0;
   }
-  .search-dropdown
-  {
+  .search-dropdown {
     display: none;
   }
 
@@ -1500,22 +1475,18 @@ button.nav-button {
     padding: 0.5rem;
     height: auto;
   }
-  .column1
-  {
+  .column1 {
     margin: 10px;
     margin-right: auto;
   }
 
-  .column-news2
-  {
+  .column-news2 {
     max-width: auto;
     min-width: 100%;
     margin: 0;
   }
 
-  .row-about1
-  {
+  .row-about1 {
     flex-direction: column;
   }
-
 }
