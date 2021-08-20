@@ -50,6 +50,11 @@ const Header = () => {
             </NavLink>
           </li>
           <li>
+            <NavLink exact to="/subjects" onClick={onLinkClick}>
+              Subjects
+            </NavLink>
+          </li>
+          <li>
             <NavLink exact to="/news" onClick={onLinkClick}>
               News
             </NavLink>
