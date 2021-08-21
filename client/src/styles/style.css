@@ -1179,8 +1179,9 @@ button.nav-button {
 }
 .course-input-bar {
   min-width: 600px;
+  background: #f4f4f4;
   height: 60px;
-  border: 2px solid white;
+  border: 1px solid black;
   border-radius: 20px;
   padding: 0 30px;
   text-align: center;

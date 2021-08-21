@@ -12,6 +12,7 @@ const Courses = () => {
   const coursesData = useSelector((state) => state.courseReducer)
   const dispatch = useDispatch()
   const [open, setOpen] = useState(false)
+  const [research, setResearch] = useState('Bachelor')
   let averageMark = 0
 
   const onLinkClick = () => {
@@ -65,23 +66,11 @@ const Courses = () => {
             type="text"
             className="course-input-bar"
             placeholder="Search by keyword"
+            onChange={(e) => setResearch(e.target.value)}
           />
         </div>
         <div className="column-course1">
-          {/* <div className="search-dropdown active">
-            <ul
-              className={openList ? 'dropdown-list open' : 'dropdown-list'}
-              onClick={() => setOpenList(!openList)}
-            >
-              <li>Filters</li>
-              <ul className="select-dropdown">
-                <li>Diploma</li>
-                <li>Postgraduate</li>
-                <li>Undergraduate</li>
-              </ul>
-            </ul>
-          </div> */}
-          <div className={open ? 'dropdown open' : 'dropdown'}>
+          {/* <div className={open ? 'dropdown open' : 'dropdown'}>
             <NavLink exact to="#" onClick={onLinkClick}>
               Filters
             </NavLink>
@@ -102,7 +91,7 @@ const Courses = () => {
                 </NavLink>
               </li>
             </ul>
-          </div>
+          </div> */}
         </div>
       </div>
       <div className="row1">
