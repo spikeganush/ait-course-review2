@@ -5,7 +5,6 @@ const {
   courseInfo,
   updateCourse,
   deleteCourse,
-  review,
   addReview,
   editReview,
   deleteReview,

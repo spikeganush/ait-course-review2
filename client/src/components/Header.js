@@ -3,51 +3,24 @@ import { useSelector } from 'react-redux'
 import { NavLink } from 'react-router-dom'
 import { UidContext } from './AppContext'
 import Log from '../components/auth'
+import logo from '../img/logo.png'
 
 const Header = () => {
   const uid = useContext(UidContext)
   const userData = useSelector((state) => state.userReducer)
   const [loginPopup, setLoginPopup] = useState(false)
   const [open, setOpen] = useState(false)
-
   const logoutHandler = () => {
     localStorage.removeItem('authToken')
     window.location.reload()
   }
 
-  const onBtnClick = () => {
-    setOpen(open ? false : true)
-  }
-
-  const onLinkClick = () => {
-    setOpen(false)
-  }
-
-  const dropdown = document.querySelectorAll('.dropdown');
-  const elements = Array.from( dropdown );
-  elements.forEach( function( elm ) {
-      elm.addEventListener('click',( evt ) => {
-         console.log( evt.target );
-          const target = evt.target;
-          if( target.parentNode.classList.contains( 'open')){
-              target.parentNode.classList.remove('open');
-          }
-          else {
-              target.parentNode.classList.add('open');
-          }
-      })
-  });
-
   return (
     <header className="header">
       <NavLink exact to="/">
-        <img
-          src="https://thebest-edu.com/wp-content/uploads/2021/03/AIT_LOGO_newblue_y9eugb.png"
-          alt="logo"
-          className="logo"
-        />
+        <img src={logo} alt="logo" className="logo" />
       </NavLink>
-      <button className="nav-button" onClick={onBtnClick}>
+      <button className="nav-button" onClick={() => setOpen(!open)}>
         <span className="stripe"></span>
         <span className="stripe"></span>
         <span className="stripe"></span>
@@ -55,49 +28,47 @@ const Header = () => {
       <nav>
         <ul className={open ? 'nav open' : 'nav'}>
           <li>
-            <NavLink exact to="/" onClick={onLinkClick}>
+            <NavLink exact to="/">
               Home
             </NavLink>
           </li>
           <li>
-            <div className="dropdown">
-              <NavLink exact to="#" onClick={onLinkClick}>
-                Courses
-                <ul className="submenu">
-                  <li>
-                    <NavLink exact to="/courses" onClick={onLinkClick}>Courses</NavLink>
-                  </li>
-                  <li>
-                    <NavLink exact to="/subjects" onClick={onLinkClick}>Subjects</NavLink>
-                  </li>
-                </ul>
+            <div className={open ? 'dropdown open' : 'dropdown'}>
+              <NavLink exact to="#" onClick={() => setOpen(!open)}>
+                Reviews
               </NavLink>
+              <ul className="submenu">
+                <li>
+                  <NavLink exact to="/courses" onClick={() => setOpen(!open)}>
+                    Courses
+                  </NavLink>
+                </li>
+                <li>
+                  <NavLink exact to="/subjects" onClick={() => setOpen(!open)}>
+                    Subjects
+                  </NavLink>
+                </li>
+              </ul>
             </div>
-          
           </li>
-          {/* <li>
-            <NavLink exact to="/subjects" onClick={onLinkClick}>
-              Subjects
-            </NavLink>
-          </li> */}
           <li>
-            <NavLink exact to="/news" onClick={onLinkClick}>
+            <NavLink exact to="/news">
               News
             </NavLink>
           </li>
           <li>
-            <NavLink exact to="/aboutUs" onClick={onLinkClick}>
+            <NavLink exact to="/aboutUs">
               About us
             </NavLink>
           </li>
           <li>
-            <NavLink exact to="/contact" onClick={onLinkClick}>
+            <NavLink exact to="/contact">
               Contact
             </NavLink>
           </li>
           {userData.admin ? (
             <li>
-              <NavLink exact to="/admin" onClick={onLinkClick}>
+              <NavLink exact to="/admin">
                 Admin
               </NavLink>
             </li>
@@ -113,7 +84,7 @@ const Header = () => {
             {userData.username}
             <NavLink exact to="/profil" className="profil-link">
               <img
-                src={userData.picture}
+                src={__dirname + userData.picture}
                 alt="user-pic"
                 className="profile-logo"
               />{' '}
@@ -140,7 +111,6 @@ const Header = () => {
               </span>
             </li>
           </ul>
-          
         )}
       </div>
       {loginPopup && (

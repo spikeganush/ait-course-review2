@@ -15,27 +15,26 @@ const Courses = () => {
   let averageMark = 0
 
   const onLinkClick = () => {
-    setOpen(false)
+    setOpen(!open)
   }
 
   useEffect(() => {
     dispatch(getAllCourses())
   }, [dispatch])
 
-  const dropdown = document.querySelectorAll('.dropdown');
-  const elements = Array.from( dropdown );
-  elements.forEach( function( elm ) {
-      elm.addEventListener('click',( evt ) => {
-         console.log( evt.target );
-          const target = evt.target;
-          if( target.parentNode.classList.contains( 'open')){
-              target.parentNode.classList.remove('open');
-          }
-          else {
-              target.parentNode.classList.add('open');
-          }
-      })
-  });
+  const dropdown = document.querySelectorAll('.dropdown')
+  const elements = Array.from(dropdown)
+  elements.forEach(function (elm) {
+    elm.addEventListener('click', (evt) => {
+      console.log(evt.target)
+      const target = evt.target
+      if (target.parentNode.classList.contains('open')) {
+        target.parentNode.classList.remove('open')
+      } else {
+        target.parentNode.classList.add('open')
+      }
+    })
+  })
 
   const handleOpenCourse = (props) => {
     history.push(`/course/${props}`)
@@ -82,20 +81,28 @@ const Courses = () => {
               </ul>
             </ul>
           </div> */}
-            <div className="dropdown">
-              <NavLink exact to="#" onClick={onLinkClick}>Filters</NavLink>
-                <ul className="submenu">
-                  <li>
-                    <NavLink exact to="#" onClick={onLinkClick}>Diploma</NavLink>
-                  </li>
-                  <li>
-                    <NavLink exact to="#" onClick={onLinkClick}>Postgraduate</NavLink>
-                  </li>
-                  <li>
-                    <NavLink exact to="#" onClick={onLinkClick}>Undergraduate</NavLink>
-                  </li>
-                </ul>
-            </div> 
+          <div className={open ? 'dropdown open' : 'dropdown'}>
+            <NavLink exact to="#" onClick={onLinkClick}>
+              Filters
+            </NavLink>
+            <ul className="submenu">
+              <li>
+                <NavLink exact to="#" onClick={onLinkClick}>
+                  Diploma
+                </NavLink>
+              </li>
+              <li>
+                <NavLink exact to="#" onClick={onLinkClick}>
+                  Postgraduate
+                </NavLink>
+              </li>
+              <li>
+                <NavLink exact to="#" onClick={onLinkClick}>
+                  Undergraduate
+                </NavLink>
+              </li>
+            </ul>
+          </div>
         </div>
       </div>
       <div className="row1">

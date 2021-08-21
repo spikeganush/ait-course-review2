@@ -2,13 +2,13 @@ import React from 'react'
 import { useSelector } from 'react-redux'
 import { isEmpty, timestampParser } from './Utils'
 import ReactStars from 'react-stars'
+import EditDeleteReview from './EditDeleteReview'
 
 const CardReviews = () => {
   const courseData = useSelector((state) => state.courseReducer)
   const usersData = useSelector((state) => state.usersReducer)
   const userData = useSelector((state) => state.userReducer)
 
-  //const handleReview = () => {}
   return (
     <>
       {courseData.reviews.map((reviews) => {
@@ -45,6 +45,7 @@ const CardReviews = () => {
                 <p>{reviews.reviewText}</p>
 
                 <ReactStars size={40} value={reviews.reviewMark} edit={false} />
+                <EditDeleteReview review={reviews} courseId={courseData._id} />
               </div>
             </div>
           </div>

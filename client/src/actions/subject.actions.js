@@ -12,7 +12,8 @@ export const GET_SUBJECT_ERRORS = 'GET_SUBJECT_ERRORS'
 
 //Comment
 export const ADD_REVIEW = 'ADD_REVIEW'
-
+export const DELETE_REVIEW_SUBJECT = 'DELETE_REVIEW_SUBJECT'
+export const EDIT_REVIEW_SUBJECT = 'EDIT_REVIEW_SUBJECT'
 //---------------------
 
 export const getSubject = (sid) => {
@@ -135,6 +136,45 @@ export const addReview = (
       data: { reviewerId, reviewerUsername, review, reviewMark },
     })
       .then((res) => dispatch({ type: ADD_REVIEW, payload: { subjectId } }))
+      .catch((err) => console.log(err))
+  }
+}
+
+export const deleteReviewSubject = (subjectId, reviewId) => {
+  return (dispatch) => {
+    return axios({
+      method: 'patch',
+      url: `/api/subject/delete-review/${subjectId}`,
+      data: { reviewId },
+    })
+      .then((res) => {
+        dispatch({
+          type: DELETE_REVIEW_SUBJECT,
+          payload: { subjectId, reviewId },
+        })
+      })
+      .catch((err) => console.log(err))
+  }
+}
+
+export const editReviewSubject = (
+  subjectId,
+  reviewId,
+  reviewText,
+  reviewMark
+) => {
+  return (dispatch) => {
+    return axios({
+      method: 'patch',
+      url: `/api/subject/edit-review/${subjectId}`,
+      data: { reviewId, reviewText, reviewMark },
+    })
+      .then((res) => {
+        dispatch({
+          type: EDIT_REVIEW_SUBJECT,
+          payload: { subjectId, reviewId, reviewText, reviewMark },
+        })
+      })
       .catch((err) => console.log(err))
   }
 }

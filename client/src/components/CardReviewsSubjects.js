@@ -2,6 +2,7 @@ import React from 'react'
 import { useSelector } from 'react-redux'
 import { isEmpty, timestampParser } from './Utils'
 import ReactStars from 'react-stars'
+import EditDeleteReviewSubject from './EditeDeleteReviewSubject'
 
 const CardReviewsSubjects = () => {
   const subjectData = useSelector((state) => state.subjectReducer)
@@ -45,6 +46,10 @@ const CardReviewsSubjects = () => {
                 <p>{reviews.reviewText}</p>
 
                 <ReactStars size={40} value={reviews.reviewMark} edit={false} />
+                <EditDeleteReviewSubject
+                  review={reviews}
+                  subjectId={subjectData._id}
+                />
               </div>
             </div>
           </div>

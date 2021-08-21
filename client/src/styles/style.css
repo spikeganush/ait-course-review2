@@ -35,7 +35,7 @@ input,
 textarea {
   resize: none;
   border-radius: 20px;
-  /* width: 270px; */
+  width: 270px;
   font-family: var(--font-1);
   /* background: var(--white); */
 }
@@ -528,7 +528,6 @@ i:hover {
 .profil-page .popup-profil-container .modal ul li h4 {
   text-align: left;
   min-width: 210px;
-  
 }
 
 .profil-page .popup-profil-container .modal ul li .follow-handler {
@@ -635,7 +634,6 @@ a {
 
 .nav li a {
   transition: all 0.3s ease 0s;
-  color: black;
 }
 
 .nav a:hover {
@@ -956,6 +954,7 @@ body {
 }
 
 .form-group input,
+.edit-delete textarea,
 .form-group textarea {
   padding: 10px 20px;
   border: none;
@@ -965,6 +964,7 @@ body {
   font-size: 1rem;
   border-radius: 5px;
   box-shadow: 0 0 2px black;
+  resize: vertical;
 }
 
 .form-group input:focus {
@@ -1124,127 +1124,35 @@ button.nav-button {
   cursor: pointer;
 }
 
-.column2 > span {
+.edit-delete {
+  display: flex;
+  width: 100%;
+  justify-content: flex-end;
+}
+
+.button-edit-area {
+  display: flex;
+  align-content: center;
+  margin-top: 10px;
+}
+
+.edit-icon {
+  width: 35px;
+  padding: 5px;
+  background: #f4f4f4;
+  border-radius: 50%;
+}
+
+.edit-icon:hover {
+  background: rgb(204, 204, 204);
+}
+
+.cancel {
   cursor: pointer;
 }
 
-/* responsive for top bar navigation */
-@media screen and (max-width: 800px) {
-  .row1 {
-    flex-direction: column;
-    margin: 20px;
-  }
-
-  input.input-bar {
-    min-width: auto;
-    max-width: 100%;
-    margin: 1em;
-    position: static;
-    background-color: white;
-    font-size: 1rem;
-    padding: 0.5rem;
-    height: auto;
-  }
-
-  .input-bar::-webkit-input-placeholder {
-    font-size: small;
-  }
-
-  .student-image {
-    max-width: 100%;
-    padding: 20px;
-  }
-
-  .column1 {
-    margin: 10px;
-  }
-
-  .column1 a {
-    margin-left: 0;
-    margin: auto;
-  }
-  .row2 {
-    flex-direction: column;
-  }
-  .column2 {
-    max-width: auto;
-    min-width: 100%;
-    margin: 0;
-  }
-  .row {
-    flex-direction: column;
-  }
-  .column {
-    margin: 0;
-  }
-
-  .column h1 {
-    font-size: 30px;
-    margin: 20px;
-  }
-  .column3 {
-    margin: 0;
-    max-width: 100%;
-    padding: 10px;
-  }
-
-  .text {
-    margin-left: 0;
-  }
-
-  .nav.open {
-    height: calc(100vh - 154px);
-  }
-
-  .nav {
-    position: fixed;
-    background-color: rgba(0, 0, 0, 0.8);
-    top: 154px;
-    left: 0;
-    /* min-height: calc( 100vh - 154px ); */
-    min-width: 100vw;
-    z-index: 999;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    display: flex;
-    overflow: hidden;
-    height: 0;
-    transition: height 0.5s;
-  }
-
-  .nav > li > a {
-    color: white;
-    padding: 1em;
-    display: block;
-  }
-
-  button.nav-button {
-    display: flex;
-    order: 4;
-  }
-
-  .banner {
-    /* display: block; */
-    flex-direction: column;
-    aspect-ratio: 1/1;
-  }
-
-  .text-banner {
-    font-size: 1.5ch;
-    text-align: center;
-  }
-
-  .logo {
-    max-width: 100px;
-  }
-
-  input {
-    min-width: 50%;
-  }
-  .text-banner {
-    margin: auto;
-  }
+.column2 > span {
+  cursor: pointer;
 }
 
 /* CSS for course page */
@@ -1458,6 +1366,207 @@ button.nav-button {
   width: 40%;
 }
 
+/* Dropdown menu */
+.dropdown {
+  position: relative;
+}
+
+.dropdown > a::after {
+  content: '\25bc';
+  font-size: 0.7em;
+  padding-left: 20px;
+  color: rgb(0, 0, 0);
+}
+
+.dropdown .submenu {
+  position: absolute;
+  background-color: white;
+  display: none;
+  box-shadow: 0.2px 0.2px 1.5px black;
+  z-index: 9999;
+}
+
+.dropdown .submenu a {
+  white-space: nowrap;
+}
+
+.dropdown .submenu a:hover {
+  background-color: #014137;
+  color: white;
+}
+
+.dropdown.open .submenu {
+  display: block;
+  margin-top: 20px;
+}
+.submenu li {
+  padding: 30px;
+  font-size: 1em;
+  margin-right: 50px;
+}
+
+/* responsive for top bar navigation */
+@media screen and (max-width: 800px) {
+  .dropdown {
+    position: relative;
+    text-align: center;
+  }
+  .dropdown > a::after {
+    content: '';
+    font-size: 0;
+    padding-left: 0;
+    color: rgb(0, 0, 0);
+  }
+
+  .dropdown > a::before {
+    position: absolute;
+    content: '\25bc';
+    font-size: 0.7em;
+    right: 30px;
+    color: white;
+  }
+
+  .dropdown > a {
+    color: white;
+  }
+
+  .dropdown.open .submenu {
+    display: flex;
+    flex-direction: column;
+    position: inherit;
+    background-color: transparent;
+    box-shadow: none;
+  }
+
+  .submenu li {
+    padding: 20px;
+    padding-top: 0px;
+    font-size: 1em;
+    margin-right: 0;
+    margin-left: 75px;
+  }
+
+  .dropdown .submenu a {
+    color: white;
+  }
+
+  .row1 {
+    flex-direction: column;
+    margin: 20px;
+  }
+
+  input.input-bar {
+    min-width: auto;
+    max-width: 100%;
+    margin: 1em;
+    position: static;
+    background-color: white;
+    font-size: 1rem;
+    padding: 0.5rem;
+    height: auto;
+  }
+
+  .input-bar::-webkit-input-placeholder {
+    font-size: small;
+  }
+
+  .student-image {
+    max-width: 100%;
+    padding: 20px;
+  }
+
+  .column1 {
+    margin: 10px;
+  }
+
+  .column1 a {
+    margin-left: 0;
+    margin: auto;
+  }
+  .row2 {
+    flex-direction: column;
+  }
+  .column2 {
+    max-width: auto;
+    min-width: 100%;
+    margin: 0;
+  }
+  .row {
+    flex-direction: column;
+  }
+  .column {
+    margin: 0;
+  }
+
+  .column h1 {
+    font-size: 30px;
+    margin: 20px;
+  }
+  .column3 {
+    margin: 0;
+    max-width: 100%;
+    padding: 10px;
+  }
+
+  .text {
+    margin-left: 0;
+  }
+
+  .nav.open {
+    height: calc(100vh - 154px);
+  }
+
+  .nav {
+    position: fixed;
+    background-color: rgba(0, 0, 0, 0.8);
+    top: 154px;
+    left: 0;
+    /* min-height: calc( 100vh - 154px ); */
+    min-width: 100vw;
+    z-index: 999;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    overflow: hidden;
+    height: 0;
+    transition: height 0.5s;
+  }
+
+  .nav > li > a {
+    color: white;
+    padding: 1em;
+    display: block;
+  }
+
+  button.nav-button {
+    display: flex;
+    order: 4;
+  }
+
+  .banner {
+    /* display: block; */
+    flex-direction: column;
+    aspect-ratio: 1/1;
+  }
+
+  .text-banner {
+    font-size: 1.5ch;
+    text-align: center;
+  }
+
+  .logo {
+    max-width: 100px;
+  }
+
+  input {
+    min-width: 50%;
+  }
+  .text-banner {
+    margin: auto;
+  }
+}
+
 /* responsive css continued */
 @media screen and (max-width: 790px) {
   .column-course {
@@ -1491,43 +1600,4 @@ button.nav-button {
   .row-about1 {
     flex-direction: column;
   }
-}
-
-/* Dropdown menu */
-.dropdown {
-  position: relative;
-}
-
-.dropdown > a::after {
-  content: "\25bc";
-  font-size: 0.7em;
-  padding-left: 20px;
-  color: rgb(0, 0, 0);
-}
-
-.dropdown .submenu {
-  position: absolute;
-  background-color: white;
-  display: none;
-  box-shadow: 0.2px 0.2px 1.5px black; 
-  z-index: 9999;
-}
-
-.dropdown .submenu Navlink {
-  white-space: nowrap;
-}
-
-.dropdown .submenu Navlink:hover {
-  background-color: #014137;
-  color: white;
-}
-
-.dropdown.open .submenu {
-  display: block;
-  margin-top: 20px;
-}
-.submenu li {
-  padding: 30px;
-  font-size: 1em;
-  margin-right: 50px;
 }

@@ -147,7 +147,7 @@ module.exports.editReview = (req, res) => {
     return res.status(400).send('ID unknown : ' + req.params.id)
 
   try {
-    return CourseModel.findById(req.params.id, (err, docs) => {
+    return SubjectModel.findById(req.params.id, (err, docs) => {
       const theReview = docs.reviews.find((review) =>
         review._id.equals(req.body.reviewId)
       )
@@ -165,16 +165,16 @@ module.exports.editReview = (req, res) => {
   }
 }
 
-module.exports.deleteReview = (req, res) => {
+module.exports.deleteReviewSubject = (req, res) => {
   if (!ObjectID.isValid(req.params.id))
     return res.status(400).send('ID unknown : ' + req.params.id)
 
   try {
-    return CourseModel.findByIdAndUpdate(
+    return SubjectModel.findByIdAndUpdate(
       req.params.id,
       {
         $pull: {
-          comments: {
+          reviews: {
             _id: req.body.reviewId,
           },
         },

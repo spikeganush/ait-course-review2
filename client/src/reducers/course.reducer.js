@@ -5,6 +5,8 @@ import {
   UPLOAD_PHOTO,
   UPDATE_COURSE,
   ADD_COURSE,
+  DELETE_REVIEW,
+  EDIT_REVIEW,
 } from '../actions/course.action'
 
 const initialState = {}
@@ -44,6 +46,17 @@ export default function usersReducer(state = initialState, action) {
         description: action.payload.description,
         photo: action.payload.photo,
       }
+    case DELETE_REVIEW:
+      return state.map((course) => {
+        if (course._id === action.payload.courseId) {
+          return {
+            ...course,
+            reviews: course.reviews.filter(
+              (review) => review._id !== action.payload.reviewId
+            ),
+          }
+        } else return course
+      })
 
     default:
       return state

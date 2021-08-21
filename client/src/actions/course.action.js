@@ -8,8 +8,10 @@ export const UPLOAD_PHOTO = 'UPLOAD_PHOTO'
 export const UPDATE_COURSE = 'UPDATE_COURSE'
 export const DELETE_COURSE = 'DELETE_COURSE'
 
-//Comment
+//Review
 export const ADD_REVIEW = 'ADD_REVIEW'
+export const EDIT_REVIEW = 'EDIT_REVIEW'
+export const DELETE_REVIEW = 'DELETE_REVIEW'
 
 //---------------------
 export const GET_COURSE_ERRORS = 'GET_COURSE_ERRORS'
@@ -122,6 +124,37 @@ export const addReview = (
       data: { reviewerId, reviewerUsername, review, reviewMark },
     })
       .then((res) => dispatch({ type: ADD_REVIEW, payload: { courseId } }))
+      .catch((err) => console.log(err))
+  }
+}
+
+export const editReview = (courseId, reviewId, review, reviewMark) => {
+  return (dispatch) => {
+    return axios({
+      method: 'patch',
+      url: `/api/course/edit-review/${courseId}`,
+      data: { reviewId, review, reviewMark },
+    })
+      .then((res) => {
+        dispatch({
+          type: EDIT_REVIEW,
+          payload: { courseId, reviewId, review, reviewMark },
+        })
+      })
+      .catch((err) => console.log(err))
+  }
+}
+
+export const deleteReview = (courseId, reviewId) => {
+  return (dispatch) => {
+    return axios({
+      method: 'patch',
+      url: `/api/course/delete-review/${courseId}`,
+      data: { reviewId },
+    })
+      .then((res) => {
+        dispatch({ type: DELETE_REVIEW, payload: { courseId, reviewId } })
+      })
       .catch((err) => console.log(err))
   }
 }

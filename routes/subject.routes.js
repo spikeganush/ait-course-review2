@@ -7,7 +7,7 @@ const {
   deleteSubject,
   addReview,
   editReview,
-  deleteReview,
+  deleteReviewSubject,
 } = require('../controllers/subject.controller')
 const multer = require('multer')
 const upload = multer()
@@ -22,6 +22,6 @@ router.delete('/:id', deleteSubject)
 // reviews
 router.patch('/review/:id', addReview)
 router.patch('/edit-review/:id', editReview)
-router.patch('/delete-review/:id', deleteReview)
+router.patch('/delete-review/:id', deleteReviewSubject)
 
 module.exports = router

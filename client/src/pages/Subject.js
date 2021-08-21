@@ -39,6 +39,8 @@ const Subject = () => {
         dispatch(getSubject(id))
         setReview('')
         setStars(3)
+        setLeaveReview(false)
+        setReadReview(true)
       })
     }
   }

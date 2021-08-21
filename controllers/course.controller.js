@@ -224,7 +224,7 @@ module.exports.deleteReview = (req, res) => {
       req.params.id,
       {
         $pull: {
-          comments: {
+          reviews: {
             _id: req.body.reviewId,
           },
         },
