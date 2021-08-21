@@ -23,22 +23,20 @@ const Header = () => {
     setOpen(false)
   }
 
-  window.addEventListener('load', function (evt) {
-    const dropdown = document.querySelectorAll('.dropdown');
-    const elements = Array.from( dropdown );
-    elements.forEach( function( elm ) {
-        elm.addEventListener('click',( evt ) => {
-           console.log( evt.target );
-            const target = evt.target;
-            if( target.parentNode.classList.contains( 'open')){
-                target.parentNode.classList.remove('open');
-            }
-            else {
-                target.parentNode.classList.add('open');
-            }
-        })
-    });
-});
+  const dropdown = document.querySelectorAll('.dropdown');
+  const elements = Array.from( dropdown );
+  elements.forEach( function( elm ) {
+      elm.addEventListener('click',( evt ) => {
+         console.log( evt.target );
+          const target = evt.target;
+          if( target.parentNode.classList.contains( 'open')){
+              target.parentNode.classList.remove('open');
+          }
+          else {
+              target.parentNode.classList.add('open');
+          }
+      })
+  });
 
   return (
     <header className="header">

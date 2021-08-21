@@ -4,17 +4,38 @@ import { getAllCourses } from '../actions/course.action'
 import { isEmpty } from '../components/Utils'
 import { useHistory } from 'react-router-dom'
 import ReactStars from 'react-stars'
+import { NavLink } from 'react-router-dom'
 
 const Courses = () => {
-  const [openList, setOpenList] = useState(false)
+  // const [openList, setOpenList] = useState(false)
   const history = useHistory()
   const coursesData = useSelector((state) => state.courseReducer)
   const dispatch = useDispatch()
+  const [open, setOpen] = useState(false)
   let averageMark = 0
+
+  const onLinkClick = () => {
+    setOpen(false)
+  }
 
   useEffect(() => {
     dispatch(getAllCourses())
   }, [dispatch])
+
+  const dropdown = document.querySelectorAll('.dropdown');
+  const elements = Array.from( dropdown );
+  elements.forEach( function( elm ) {
+      elm.addEventListener('click',( evt ) => {
+         console.log( evt.target );
+          const target = evt.target;
+          if( target.parentNode.classList.contains( 'open')){
+              target.parentNode.classList.remove('open');
+          }
+          else {
+              target.parentNode.classList.add('open');
+          }
+      })
+  });
 
   const handleOpenCourse = (props) => {
     history.push(`/course/${props}`)
@@ -48,7 +69,7 @@ const Courses = () => {
           />
         </div>
         <div className="column-course1">
-          <div className="search-dropdown active">
+          {/* <div className="search-dropdown active">
             <ul
               className={openList ? 'dropdown-list open' : 'dropdown-list'}
               onClick={() => setOpenList(!openList)}
@@ -60,7 +81,21 @@ const Courses = () => {
                 <li>Undergraduate</li>
               </ul>
             </ul>
-          </div>
+          </div> */}
+            <div className="dropdown">
+              <NavLink exact to="#" onClick={onLinkClick}>Filters</NavLink>
+                <ul className="submenu">
+                  <li>
+                    <NavLink exact to="#" onClick={onLinkClick}>Diploma</NavLink>
+                  </li>
+                  <li>
+                    <NavLink exact to="#" onClick={onLinkClick}>Postgraduate</NavLink>
+                  </li>
+                  <li>
+                    <NavLink exact to="#" onClick={onLinkClick}>Undergraduate</NavLink>
+                  </li>
+                </ul>
+            </div> 
         </div>
       </div>
       <div className="row1">

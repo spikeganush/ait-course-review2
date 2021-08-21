@@ -1258,6 +1258,7 @@ button.nav-button {
   display: flex;
   flex-direction: row;
   justify-content: center;
+  align-items: center;
 }
 .column-course {
   margin: 60px;
@@ -1500,7 +1501,7 @@ button.nav-button {
 .dropdown > a::after {
   content: "\25bc";
   font-size: 0.7em;
-  padding-left: 10px;
+  padding-left: 20px;
   color: rgb(0, 0, 0);
 }
 
@@ -1508,7 +1509,8 @@ button.nav-button {
   position: absolute;
   background-color: white;
   display: none;
-  box-shadow: 0.5px 1px 4px black;
+  box-shadow: 0.2px 0.2px 1.5px black; 
+  z-index: 9999;
 }
 
 .dropdown .submenu Navlink {
@@ -1525,7 +1527,7 @@ button.nav-button {
   margin-top: 20px;
 }
 .submenu li {
-  padding: 20px;
+  padding: 30px;
   font-size: 1em;
   margin-right: 50px;
 }
