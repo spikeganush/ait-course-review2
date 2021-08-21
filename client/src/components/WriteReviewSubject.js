@@ -33,6 +33,7 @@ const WriteReviewSubject = ({ subjectData, userId, userName }) => {
           <textarea
             required
             id="reviewText"
+            value={review}
             placeholder="Write your review"
             onChange={(e) => setReview(e.target.value)}
           ></textarea>
