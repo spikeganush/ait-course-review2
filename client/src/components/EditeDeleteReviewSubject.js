@@ -3,6 +3,7 @@ import { useDispatch } from 'react-redux'
 import {
   deleteReviewSubject,
   editReviewSubject,
+  getSubject,
 } from '../actions/subject.actions'
 import { UidContext } from './AppContext'
 import ReactStars from 'react-stars'
@@ -15,11 +16,17 @@ const EditDeleteReviewSubject = ({ review, subjectId }) => {
   const uid = useContext(UidContext)
   const dispatch = useDispatch()
 
+  const handleOpenEdit = () => {
+    setEdit(true)
+    setText(review.reviewText)
+  }
+
   const handleEdit = (e) => {
     e.preventDefault()
 
     if (text) {
       dispatch(editReviewSubject(subjectId, review._id, text, stars))
+      getSubject(subjectId)
       setText('')
       setEdit(false)
     }
@@ -41,7 +48,7 @@ const EditDeleteReviewSubject = ({ review, subjectId }) => {
   return (
     <div className="edit-delete">
       {isAuthor && edit === false && (
-        <span onClick={() => setEdit(!edit)}>
+        <span onClick={handleOpenEdit}>
           <img
             src="../img/icons/edit.svg"
             className="edit-icon"

@@ -47,17 +47,25 @@ export default function usersReducer(state = initialState, action) {
         photo: action.payload.photo,
       }
     case DELETE_REVIEW:
-      return state.map((course) => {
-        if (course._id === action.payload.courseId) {
-          return {
-            ...course,
-            reviews: course.reviews.filter(
-              (review) => review._id !== action.payload.reviewId
-            ),
-          }
-        } else return course
-      })
-
+      return {
+        ...state,
+        reviews: state.reviews.filter(
+          (review) => review._id !== action.payload.reviewId
+        ),
+      }
+    case EDIT_REVIEW:
+      return {
+        ...state,
+        reviews: state.reviews.map((review) =>
+          review._id === action.payload.reviewId
+            ? {
+                ...review,
+                reviewText: action.payload.reviewText,
+                reviewMark: action.payload.reviewMark,
+              }
+            : review
+        ),
+      }
     default:
       return state
   }

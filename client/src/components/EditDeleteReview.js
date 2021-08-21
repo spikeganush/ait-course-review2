@@ -11,8 +11,11 @@ const EditDeleteReview = ({ review, courseId }) => {
   const [stars, setStars] = useState(3)
   const uid = useContext(UidContext)
   const dispatch = useDispatch()
-  console.log('review id: ' + review._id)
-  console.log('course: ' + courseId)
+
+  const handleOpenEdit = () => {
+    setEdit(true)
+    setText(review.reviewText)
+  }
 
   const handleEdit = (e) => {
     e.preventDefault()
@@ -21,7 +24,6 @@ const EditDeleteReview = ({ review, courseId }) => {
       dispatch(editReview(courseId, review._id, text, stars))
       setText('')
       setEdit(false)
-      setIsAuthor(false)
     }
   }
 
@@ -41,7 +43,7 @@ const EditDeleteReview = ({ review, courseId }) => {
   return (
     <div className="edit-delete">
       {isAuthor && edit === false && (
-        <span onClick={() => setEdit(!edit)}>
+        <span onClick={handleOpenEdit}>
           <img
             src="../img/icons/edit.svg"
             className="edit-icon"
@@ -70,7 +72,7 @@ const EditDeleteReview = ({ review, courseId }) => {
             edit={true}
             onChange={(newValue) => setStars(newValue)}
           />
-          <div className="btn">
+          <div className="button-edit-area">
             <span
               onClick={() => {
                 if (
@@ -90,6 +92,9 @@ const EditDeleteReview = ({ review, courseId }) => {
             </span>
             <input type="submit" value="Validate modification" />
           </div>
+          <span className="cancel" onClick={() => setEdit(!edit)}>
+            Cancel
+          </span>
         </form>
       )}
     </div>

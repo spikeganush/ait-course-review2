@@ -1073,6 +1073,7 @@ button.nav-button {
   background-color: lightblue;
   border-radius: 8px;
   padding: 10px 35px 10px 35px;
+  margin-top: 15px;
 }
 
 .write-review input[type='submit']:disabled {

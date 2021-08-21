@@ -203,7 +203,8 @@ module.exports.editReview = (req, res) => {
       )
 
       if (!theReview) return res.status(404).send('Review not found')
-      theReview.review = req.body.review
+      theReview.reviewText = req.body.reviewText
+      theReview.reviewMark = req.body.reviewMark
 
       return docs.save((err) => {
         if (!err) return res.status(200).send(docs)

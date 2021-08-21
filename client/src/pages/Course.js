@@ -1,19 +1,18 @@
 import React, { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
-import { getCourse, addReview } from '../actions/course.action'
+import { getCourse } from '../actions/course.action'
 import ReactStars from 'react-stars'
 import CardReviews from '../components/CardReviews'
 import { isEmpty } from '../components/Utils'
+import WriteReview from '../components/WriteReview'
 
 const Course = () => {
   const courseData = useSelector((state) => state.courseReducer)
   const userData = useSelector((state) => state.userReducer)
   const dispatch = useDispatch()
   const { id } = useParams()
-  const [leaveReview, setLeaveReview] = useState(false)
   const [readReview, setReadReview] = useState(false)
-  const [activateButton, setActivateButton] = useState(true)
 
   const courseMarks = !isEmpty(courseData._id)
     ? courseData.reviews.map((review) => review.reviewMark)
@@ -23,27 +22,9 @@ const Course = () => {
     ? courseMarks.reduce((prev, cur) => prev + cur, 0)
     : 0
 
-  const [review, setReview] = useState('')
-  const [stars, setStars] = useState(3)
-
   useEffect(() => {
     dispatch(getCourse(id))
-    setActivateButton(true)
   }, [dispatch, id])
-
-  const handleReview = (e) => {
-    e.preventDefault()
-
-    if (review) {
-      dispatch(
-        addReview(id, userData._id, userData.username, review, stars)
-      ).then(() => {
-        dispatch(getCourse(id))
-        setReview('')
-        setStars(3)
-      })
-    }
-  }
 
   return (
     <div className="center-course">
@@ -74,39 +55,12 @@ const Course = () => {
               : '(0)'}
           </div>
         </div>
-        <span onClick={() => setLeaveReview(!leaveReview)}>Leave a review</span>
-        {leaveReview ? (
-          userData._id ? (
-            <form action="" onSubmit={handleReview} className="write-review">
-              <label htmlFor="reviewText">Your review</label>
-              <textarea
-                required
-                id="reviewText"
-                placeholder="Write your review"
-                onChange={(e) => setReview(e.target.value)}
-              ></textarea>
-              <p>Your note</p>
-              <ReactStars
-                size={40}
-                value={3}
-                edit={true}
-                onChange={(newValue) => setStars(newValue)}
-              />
-              {activateButton ? (
-                <input type="submit" value="Send" />
-              ) : (
-                <input
-                  type="submit"
-                  value="You can review only one time"
-                  disabled="disabled"
-                />
-              )}
-            </form>
-          ) : (
-            <p>You have to be login to leave a review.</p>
-          )
-        ) : null}
 
+        <WriteReview
+          courseData={courseData}
+          userId={userData._id}
+          userName={userData.username}
+        />
         {readReview && <CardReviews review={courseData} />}
       </div>
     </div>

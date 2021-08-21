@@ -128,17 +128,17 @@ export const addReview = (
   }
 }
 
-export const editReview = (courseId, reviewId, review, reviewMark) => {
+export const editReview = (courseId, reviewId, reviewText, reviewMark) => {
   return (dispatch) => {
     return axios({
       method: 'patch',
       url: `/api/course/edit-review/${courseId}`,
-      data: { reviewId, review, reviewMark },
+      data: { reviewId, reviewText, reviewMark },
     })
       .then((res) => {
         dispatch({
           type: EDIT_REVIEW,
-          payload: { courseId, reviewId, review, reviewMark },
+          payload: { courseId, reviewId, reviewText, reviewMark },
         })
       })
       .catch((err) => console.log(err))
