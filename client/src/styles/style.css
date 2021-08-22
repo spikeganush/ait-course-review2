@@ -1384,9 +1384,9 @@ button.nav-button {
   justify-content: center;
 }
 .manual-btn {
-  border: 2px solid #555;
+  border: 3px solid black;
   padding: 5px;
-  border-radius: 10px;
+  border-radius: 50%;
   cursor: pointer;
   transition: 1s;
 }
@@ -1465,6 +1465,78 @@ button.nav-button {
 
 /* responsive for top bar navigation */
 @media screen and (max-width: 800px) {
+  .search-bar-home {
+    bottom: -20px;
+  }
+
+  .slide-frame {
+    height: 150px;
+    width: 100%;
+    overflow: hidden;
+  }
+
+  .slide-image {
+    display: flex;
+  }
+
+  .slide-image input {
+    display: none;
+  }
+  .img-container {
+    transition: 2s;
+  }
+
+  .img-container img {
+    width: auto;
+    height: auto;
+  }
+
+  .student-image {
+    padding: 10px;
+  }
+
+  .nav-manual {
+    position: absolute;
+    width: 100%;
+    display: flex;
+    left: 0;
+    top: 20px;
+    /* margin-top: 380px;
+    margin-right: 100px; */
+    justify-content: center;
+  }
+
+  #radio1:checked ~ .first {
+    margin-left: 0;
+  }
+  #radio2:checked ~ .first {
+    margin-left: -20%;
+  }
+  #radio3:checked ~ .first {
+    margin-left: -40%;
+  }
+  #radio4:checked ~ .first {
+    margin-left: -60%;
+  }
+
+  .column-course {
+    margin: 0;
+  }
+  .search-dropdown {
+    display: none;
+  }
+
+  input.course-input-bar {
+    min-width: auto;
+    max-width: 100%;
+    font-size: 1rem;
+    padding: 0.5rem;
+    height: auto;
+  }
+
+  .dataResult {
+    top: 30px;
+  }
   .dropdown {
     position: relative;
     text-align: center;
@@ -1516,7 +1588,6 @@ button.nav-button {
   input.input-bar {
     min-width: auto;
     max-width: 100%;
-    margin: 1em;
     position: static;
     background-color: white;
     font-size: 1rem;
@@ -1549,8 +1620,14 @@ button.nav-button {
     min-width: 100%;
     margin: 0;
   }
+
+  .dataResult {
+    position: absolute;
+    width: 70vw;
+  }
   .row {
     flex-direction: column;
+    padding-top: 2.5em;
   }
   .column {
     margin: 0;
@@ -1604,8 +1681,8 @@ button.nav-button {
 
   .banner {
     /* display: block; */
-    flex-direction: column;
-    aspect-ratio: 1/1;
+    display: block;
+    background-size: cover;
   }
 
   .text-banner {
@@ -1627,25 +1704,6 @@ button.nav-button {
 
 /* responsive css continued */
 @media screen and (max-width: 790px) {
-  .column-course {
-    margin: 0;
-  }
-  .search-dropdown {
-    display: none;
-  }
-
-  input.course-input-bar {
-    min-width: auto;
-    max-width: 100%;
-    font-size: 1rem;
-    padding: 0.5rem;
-    height: auto;
-  }
-
-  .dataResult {
-    top: 30px;
-  }
-
   .searchIcon {
     background: #f4f4f4;
     height: auto;
