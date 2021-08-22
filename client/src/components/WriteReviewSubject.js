@@ -1,12 +1,14 @@
-import React, { useState } from 'react'
+import React, { useContext, useState } from 'react'
 import { useDispatch } from 'react-redux'
 import { addReview, getSubject } from '../actions/subject.actions'
 import ReactStars from 'react-stars'
+import { UidContext } from '../components/AppContext'
 
 const WriteReviewSubject = ({ subjectData, userId, userName }) => {
   const [leaveReview, setLeaveReview] = useState(false)
   const [review, setReview] = useState('')
   const [stars, setStars] = useState(3)
+  const uid = useContext(UidContext)
   const dispatch = useDispatch()
 
   const handleReview = (e) => {
@@ -26,7 +28,9 @@ const WriteReviewSubject = ({ subjectData, userId, userName }) => {
 
   return (
     <>
-      <span onClick={() => setLeaveReview(!leaveReview)}>Leave a review</span>
+      {uid ? (
+        <span onClick={() => setLeaveReview(!leaveReview)}>Leave a review</span>
+      ) : null}
       {leaveReview ? (
         <form action="" onSubmit={handleReview} className="write-review">
           <label htmlFor="reviewText">Your review</label>

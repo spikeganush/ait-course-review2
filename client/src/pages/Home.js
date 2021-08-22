@@ -75,11 +75,7 @@ const Home = () => {
             <h1>Enjoy Your New</h1>
             <h1>Experiences With Us</h1>
           </div>
-          {/* <input
-            type="text"
-            className="input-bar"
-            placeholder="Search by keyword"
-          /> */}
+
           <SearchBarHome course={courseData} subject={subjectData} />
         </div>
 
