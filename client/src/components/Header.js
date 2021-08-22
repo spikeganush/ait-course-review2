@@ -10,6 +10,7 @@ const Header = () => {
   const userData = useSelector((state) => state.userReducer)
   const [loginPopup, setLoginPopup] = useState(false)
   const [open, setOpen] = useState(false)
+
   const logoutHandler = () => {
     localStorage.removeItem('authToken')
     window.location.reload()
@@ -17,7 +18,7 @@ const Header = () => {
 
   return (
     <header className="header">
-      <NavLink exact to="/">
+      <NavLink exact to="/" onClick={() => setOpen(false)}>
         <img src={logo} alt="logo" className="logo" />
       </NavLink>
       <button className="nav-button" onClick={() => setOpen(!open)}>
@@ -28,7 +29,7 @@ const Header = () => {
       <nav>
         <ul className={open ? 'nav open' : 'nav'}>
           <li>
-            <NavLink exact to="/">
+            <NavLink exact to="/" onClick={() => setOpen(false)}>
               Home
             </NavLink>
           </li>
@@ -52,23 +53,23 @@ const Header = () => {
             </div>
           </li>
           <li>
-            <NavLink exact to="/news">
+            <NavLink exact to="/news" onClick={() => setOpen(false)}>
               News
             </NavLink>
           </li>
           <li>
-            <NavLink exact to="/aboutUs">
+            <NavLink exact to="/aboutUs" onClick={() => setOpen(false)}>
               About us
             </NavLink>
           </li>
           <li>
-            <NavLink exact to="/contact">
+            <NavLink exact to="/contact" onClick={() => setOpen(false)}>
               Contact
             </NavLink>
           </li>
           {userData.admin ? (
             <li>
-              <NavLink exact to="/admin">
+              <NavLink exact to="/admin" onClick={() => setOpen(false)}>
                 Admin
               </NavLink>
             </li>

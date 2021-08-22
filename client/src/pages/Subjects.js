@@ -1,12 +1,12 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { getAllSubjects } from '../actions/subject.actions'
 import { isEmpty } from '../components/Utils'
 import { useHistory } from 'react-router-dom'
 import ReactStars from 'react-stars'
+import SearchBar from '../components/SearchBarSubject'
 
 const Subjects = () => {
-  const [openList, setOpenList] = useState(false)
   const history = useHistory()
   const subjectsData = useSelector((state) => state.subjectReducer)
   const dispatch = useDispatch()
@@ -40,34 +40,10 @@ const Subjects = () => {
   return (
     <main className="course-content">
       <div className="row-course">
-        <div className="column-course">
-          <input
-            type="text"
-            className="course-input-bar"
-            placeholder="Search by keyword"
-          />
-        </div>
-        <div className="column-course1">
-          <div className="search-dropdown active">
-            <ul
-              className={openList ? 'dropdown-list open' : 'dropdown-list'}
-              onClick={() => setOpenList(!openList)}
-            >
-              <li>Filters</li>
-              <ul className="select-dropdown">
-                <li>Diploma</li>
-                <li>Postgraduate</li>
-                <li>Undergraduate</li>
-              </ul>
-            </ul>
-          </div>
-        </div>
+        <SearchBar data={subjectsData} />
       </div>
       <div className="row1">
-        <div className="column1">
-          <h3>Most Reviews Subject</h3>
-        </div>
-        <div className="column1">
+        <div className="row1">
           <h1>Subjects</h1>
         </div>
       </div>

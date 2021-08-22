@@ -1,41 +1,19 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { getAllCourses } from '../actions/course.action'
 import { isEmpty } from '../components/Utils'
 import { useHistory } from 'react-router-dom'
 import ReactStars from 'react-stars'
-import { NavLink } from 'react-router-dom'
+import SearchBar from '../components/SearchBar'
 
 const Courses = () => {
-  // const [openList, setOpenList] = useState(false)
   const history = useHistory()
   const coursesData = useSelector((state) => state.courseReducer)
   const dispatch = useDispatch()
-  const [open, setOpen] = useState(false)
-  const [research, setResearch] = useState('Bachelor')
   let averageMark = 0
-
-  const onLinkClick = () => {
-    setOpen(!open)
-  }
-
   useEffect(() => {
     dispatch(getAllCourses())
   }, [dispatch])
-
-  const dropdown = document.querySelectorAll('.dropdown')
-  const elements = Array.from(dropdown)
-  elements.forEach(function (elm) {
-    elm.addEventListener('click', (evt) => {
-      console.log(evt.target)
-      const target = evt.target
-      if (target.parentNode.classList.contains('open')) {
-        target.parentNode.classList.remove('open')
-      } else {
-        target.parentNode.classList.add('open')
-      }
-    })
-  })
 
   const handleOpenCourse = (props) => {
     history.push(`/course/${props}`)
@@ -61,44 +39,12 @@ const Courses = () => {
   return (
     <main className="course-content">
       <div className="row-course">
-        <div className="column-course">
-          <input
-            type="text"
-            className="course-input-bar"
-            placeholder="Search by keyword"
-            onChange={(e) => setResearch(e.target.value)}
-          />
-        </div>
-        <div className="column-course1">
-          {/* <div className={open ? 'dropdown open' : 'dropdown'}>
-            <NavLink exact to="#" onClick={onLinkClick}>
-              Filters
-            </NavLink>
-            <ul className="submenu">
-              <li>
-                <NavLink exact to="#" onClick={onLinkClick}>
-                  Diploma
-                </NavLink>
-              </li>
-              <li>
-                <NavLink exact to="#" onClick={onLinkClick}>
-                  Postgraduate
-                </NavLink>
-              </li>
-              <li>
-                <NavLink exact to="#" onClick={onLinkClick}>
-                  Undergraduate
-                </NavLink>
-              </li>
-            </ul>
-          </div> */}
-        </div>
+        <SearchBar data={coursesData} />
+
+        <div className="column-course1"></div>
       </div>
       <div className="row1">
-        <div className="column1">
-          <h3>Most Reviews Subject</h3>
-        </div>
-        <div className="column1">
+        <div className="row1">
           <h1>Courses</h1>
         </div>
       </div>
@@ -123,6 +69,7 @@ const Courses = () => {
                     size={40}
                     value={average(course._id)}
                     edit={false}
+                    key={course._id}
                   />
                   {course.reviews
                     ? course.reviews.length > 0 && (

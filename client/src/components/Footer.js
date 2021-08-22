@@ -22,8 +22,13 @@ const Footer = () => {
               </NavLink>
             </li>
             <li>
-              <NavLink exact to="/course">
-                Course
+              <NavLink exact to="/courses">
+                Courses
+              </NavLink>
+            </li>
+            <li>
+              <NavLink exact to="/subjects">
+                Subjects
               </NavLink>
             </li>
             <li>
@@ -48,13 +53,19 @@ const Footer = () => {
           <ul className="nav1">
             <h3>Services</h3>
             <li>
-              <a href="faq">FAQ</a>
+              <NavLink exact to="/">
+                FAQ
+              </NavLink>
             </li>
             <li>
-              <a href="community">Community</a>
+              <NavLink exact to="/">
+                Community
+              </NavLink>
             </li>
             <li>
-              <a href="call_centre">Call centre</a>
+              <NavLink exact to="/">
+                Call centre
+              </NavLink>
             </li>
           </ul>
         </div>

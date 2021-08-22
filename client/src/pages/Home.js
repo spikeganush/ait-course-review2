@@ -6,6 +6,7 @@ import { getSubjects } from '../actions/subject.actions'
 import { isEmpty } from '../components/Utils'
 import { useHistory, NavLink } from 'react-router-dom'
 import ReactStars from 'react-stars'
+import SearchBarHome from '../components/SearchBarHome'
 
 const Home = () => {
   const dispatch = useDispatch()
@@ -74,11 +75,12 @@ const Home = () => {
             <h1>Enjoy Your New</h1>
             <h1>Experiences With Us</h1>
           </div>
-          <input
+          {/* <input
             type="text"
             className="input-bar"
             placeholder="Search by keyword"
-          />
+          /> */}
+          <SearchBarHome course={courseData} subject={subjectData} />
         </div>
 
         <div className="banner2">

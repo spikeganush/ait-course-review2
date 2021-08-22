@@ -10,6 +10,8 @@ import DeleteCourse from '../components/Admin/DeleteCourse'
 import DeleteSubject from '../components/Admin/DeleteSubject'
 import AddCourseForm from '../components/Admin/AddCourseForm'
 import AddSubjectForm from '../components/Admin/AddSubjectForm'
+import CloseIcon from '@material-ui/icons/Close'
+import OpenIcon from '@material-ui/icons/KeyboardArrowDown'
 
 const Admin = () => {
   const courseData = useSelector((state) => state.courseReducer)
@@ -18,6 +20,7 @@ const Admin = () => {
 
   //load data
   const [loadCourses, setLoadCourses] = useState(true)
+  const [openCourse, setOpenCourse] = useState(true)
 
   useEffect(() => {
     if (loadCourses) {
@@ -33,26 +36,39 @@ const Admin = () => {
         <AddSubjectForm />
       </div>
       <br />
-      <h1 className="admin-title">Courses</h1>
-      <div className="admin update">
-        {!isEmpty(courseData[0]) &&
-          courseData.map((course) => {
-            return (
-              <div className="login-screen__form" key={course._id}>
-                <h3>{course.title}</h3>
-                <img
-                  src={course.photo}
-                  className="photo-course-subject"
-                  alt="course"
-                />
-                <h4>{course.code}</h4>
-                <h4>{course.summarize}</h4>
-                <h4>{course.description}</h4>
-                <DeleteCourse id={course._id} />
-              </div>
-            )
-          })}
-      </div>
+      <h1 className="admin-title">
+        Courses{' '}
+        {openCourse ? (
+          <span className="close-admin" onClick={() => setOpenCourse(false)}>
+            <CloseIcon />
+          </span>
+        ) : (
+          <span className="close-admin" onClick={() => setOpenCourse(true)}>
+            <OpenIcon />
+          </span>
+        )}
+      </h1>
+      {openCourse ? (
+        <div className="admin update">
+          {!isEmpty(courseData[0]) &&
+            courseData.map((course) => {
+              return (
+                <div className="login-screen__form" key={course._id}>
+                  <h3>{course.title}</h3>
+                  <img
+                    src={course.photo}
+                    className="photo-course-subject"
+                    alt="course"
+                  />
+                  <h4>{course.code}</h4>
+                  <h4>{course.summarize}</h4>
+                  <h4>{course.description}</h4>
+                  <DeleteCourse id={course._id} />
+                </div>
+              )
+            })}
+        </div>
+      ) : null}
 
       <br />
       <h1 className="admin-title">Subjects</h1>

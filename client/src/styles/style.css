@@ -46,8 +46,8 @@ textarea:focus {
 
 button,
 input[type='submit'] {
-  background: var(--color-2);
-  color: var(--color-1);
+  background: #00162c;
+  color: white;
   transition: 0.2s;
   margin: 0;
   padding: 10px 20px;
@@ -58,8 +58,8 @@ input[type='submit'] {
 
 button:hover,
 input[type='submit']:hover {
-  background: var(--color-1);
-  color: var(--color-2);
+  background: #002b57;
+  color: white;
 }
 
 input[type='checkbox'] {
@@ -346,7 +346,7 @@ i:hover {
   transform: translate(-50%, -50%);
   width: 270px;
   background: #00162c;
-  color: var(--color-2);
+  color: white;
   border-radius: 20px;
   display: inline-block;
   padding: 9px 0;
@@ -396,7 +396,7 @@ i:hover {
 .profil-page .update-container .right-part p,
 .profil-page .update-container .right-part textarea {
   min-height: 80px;
-  border: 1px solid var(--color-1);
+  border: 1px solid black;
   border-radius: 20px 20px 6px 20px;
   padding: 10px 20px;
   font-size: 1.1rem;
@@ -675,6 +675,7 @@ a {
 
 .banner {
   display: flex;
+  flex-direction: column;
   justify-content: center;
   background-size: cover;
   background-repeat: no-repeat;
@@ -693,18 +694,24 @@ a {
 }
 
 .input-bar {
-  position: absolute;
+  position: relative;
   min-width: 600px;
   height: 60px;
   border: 2px solid white;
-  border-radius: 20px;
+  border-radius: 20px 0 0 20px;
   padding: 0 30px;
-  bottom: -30px;
 }
 
 .input-bar::placeholder {
   font-size: 2rem;
   text-align: center;
+}
+
+.search-bar-home {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  bottom: -30px;
 }
 
 .row {
@@ -746,13 +753,10 @@ a {
 }
 
 .column1 {
+  text-align: end;
   margin: 30px;
   flex: 1;
   font-family: sans-serif;
-}
-
-.column1 a {
-  margin-left: 470px;
 }
 
 .row2 {
@@ -1031,6 +1035,11 @@ body {
   text-align: center;
 }
 
+.close-admin {
+  cursor: pointer;
+  margin-left: 15px;
+}
+
 button.nav-button {
   display: none;
   flex-direction: column;
@@ -1164,13 +1173,15 @@ button.nav-button {
 }
 
 .row-course {
+  position: relative;
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
 }
 .column-course {
-  margin: 60px;
+  display: flex;
+  align-items: center;
 }
 
 .course-search-bar {
@@ -1181,15 +1192,60 @@ button.nav-button {
   min-width: 600px;
   background: #f4f4f4;
   height: 60px;
-  border: 1px solid black;
-  border-radius: 20px;
+  border-radius: 20px 0 0 20px;
   padding: 0 30px;
   text-align: center;
+}
+
+.searchIcon {
+  display: flex;
+  align-items: center;
+  background: #f4f4f4;
+  height: 60px;
+  border-radius: 0 20px 20px 0;
+}
+
+.searchIcon svg {
+  width: 30px;
+  height: 30px;
+  margin-right: 10px;
+}
+
+#clearBtn {
+  cursor: pointer;
 }
 
 .course-input-bar::placeholder {
   font-size: 1rem;
   text-align: center;
+}
+
+.dataResult {
+  position: absolute;
+  top: 60px;
+  width: 30vw;
+  height: auto;
+  border-radius: 0 0 15px 15px;
+  background-color: #f4f4f4;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  overflow: hidden;
+  overflow-y: auto;
+}
+
+.dataResult .dataItem {
+  width: 100%;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  color: black;
+}
+
+.dataItem:hover {
+  background-color: white !important;
+}
+
+.dataResult::-webkit-scrollbar {
+  display: none;
 }
 
 .search-dropdown {
@@ -1581,13 +1637,26 @@ button.nav-button {
   input.course-input-bar {
     min-width: auto;
     max-width: 100%;
-    margin: 1em;
-    position: static;
-    background-color: white;
     font-size: 1rem;
     padding: 0.5rem;
     height: auto;
   }
+
+  .dataResult {
+    top: 30px;
+  }
+
+  .searchIcon {
+    background: #f4f4f4;
+    height: auto;
+  }
+
+  .searchIcon svg {
+    width: 30px;
+    height: 30px;
+    margin-right: 10px;
+  }
+
   .column1 {
     margin: 10px;
     margin-right: auto;
